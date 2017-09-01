@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const sassThreadLoader = require('thread-loader');
 
@@ -128,6 +128,17 @@ module.exports = function (env) {
                     },
                 },
                 {
+                    loader: 'postcss-loader', // Run post css actions
+                    options: {
+                        plugins: function () { // post css plugins, can be exported to postcss.config.js
+                            return [
+                                require('precss'),
+                                require('autoprefixer')
+                            ];
+                        }
+                    }
+                },
+                {
                     loader: 'sass-loader',
                     options: {
                         outputStyle: 'collapsed',
@@ -147,10 +158,14 @@ module.exports = function (env) {
             new webpack.NoEmitOnErrorsPlugin()
             // load DLL files
             /* eslint-disable global-require */
-
+            // new webpack.DllReferencePlugin({
+            //     context: __dirname,
+            //     manifest: require('./dll/libs-manifest.json')
+            // }),
             /* eslint-enable global-require */
 
             // make DLL assets available for the app to download
+            // new AddAssetHtmlPlugin([{filepath: require.resolve('./dll/libs.dll.js')}])
         );
 
         cssLoader = [
@@ -181,7 +196,7 @@ module.exports = function (env) {
                     includePaths: [sourcePath],
                 },
             },
-        ];
+        ]
     }
 
     if (serviceWorkerBuild) {
