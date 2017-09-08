@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 
 const sassThreadLoader = require('thread-loader');
 
@@ -111,6 +110,7 @@ module.exports = function (env) {
 
         cssLoader = ExtractTextPlugin.extract({
             fallback: 'style-loader',
+            test: /\.css$/,
             use: [
                 'cache-loader',
                 {
@@ -260,7 +260,7 @@ module.exports = function (env) {
                     },
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.css$/,
                     include: sourcePath,
                     use: cssLoader,
                 },
