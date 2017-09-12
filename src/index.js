@@ -1,13 +1,13 @@
 import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
-import * as React from 'react';
+import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {AppContainer} from 'react-hot-loader';
 
 import App from './containers/App';
-import store from './stores';
+import store from './stores/index';
 
-const renderApp = (Component: React.ComponentType<any>) => {
+const renderApp = (Component) => {
     ReactDOM.render(
         <Provider store={store}>
             <Router>

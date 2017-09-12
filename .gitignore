@@ -1,7 +1,6 @@
 .cache-loader/
 build/
 dll
-jest
 node_modules/
 .idea/
 package-lock.json

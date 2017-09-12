@@ -1,10 +1,10 @@
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
-import rootReducer from 'modules/rootReducer';
+import rootReducer from '../reducers/rootReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(combineReducers(rootReducer), composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 export default store;
 
 /**
@@ -38,8 +38,8 @@ export function injectAsyncReducers(asyncReducers) {
 
 // hot reloading for reducers
 if (module.hot) {
-    module.hot.accept('../modules/rootReducer', () => {
-        const nextReducer = require('../modules/rootReducer').default; // eslint-disable-line
+    module.hot.accept('../reducers/rootReducer', () => {
+        const nextReducer = require('../reducers/rootReducer').default; // eslint-disable-line
 
         replaceReducers(nextReducer);
     });

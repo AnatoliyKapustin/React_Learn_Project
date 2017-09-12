@@ -5,6 +5,10 @@ import style from './css/login.css'
 
 class LoginPage extends Component {
 
+    constructor(props) {
+        super(props)
+    }
+
     render() {
         return (
             <div className={`text-center ${style.container}`}>
@@ -16,7 +20,9 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+        uuid: state.uuid
+    }
 }
 
 export default connect(mapStateToProps)(LoginPage)
