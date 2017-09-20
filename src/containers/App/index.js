@@ -1,18 +1,17 @@
-import * as React from 'react';
-import {Component} from 'react';
+import React, {Component} from 'react';
+import {connect} from "react-redux"
 import {Switch, Route, Redirect, BrowserRouter} from 'react-router-dom';
 import LoginPage from '../../components/login/LoginPage'
-
-import './style.scss';
+import MainPageContainer from "../MainPage/MainPageContainer";
 
 class App extends Component {
+
     render() {
-        let uuid = this.props.uuid;
-        console.log("uuid: " + uuid)
+        let token = this.props.token;
         return <BrowserRouter>
             <Switch>
                 <Route path="/login" render={props => (
-                    !uuid ? (
+                    !token ? (
                         <LoginPage {...props}/>
                     ) : (
                         <Redirect to={{
@@ -24,8 +23,8 @@ class App extends Component {
                 />
 
                 <Route path="/" render={props => (
-                    uuid ? (
-                        <PageTemplate {...props}/>
+                    token ? (
+                        <MainPageContainer {...props}/>
                     ) : (
                         <Redirect to={{
                             pathname: '/login',
@@ -38,4 +37,10 @@ class App extends Component {
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        token: state.profile.token
+    }
+}
+
+export default connect(mapStateToProps)(App);

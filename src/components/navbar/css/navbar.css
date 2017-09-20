@@ -1,0 +1,64 @@
+:global .container {
+    margin: 0 0 0 0;
+    padding: 0 15px 0 15px;
+    width: 100%;
+    background: #434B56;
+}
+
+:global .navbar-default {
+    border: none;
+    background: none;
+    margin: 0;
+}
+
+:global .btn-link:focus, :global .btn-link:hover {
+    color: #b9b9b9 !important;
+    text-decoration: none;
+}
+
+:global .navbar-form.navbar-left {
+    padding: 10px 15px 10px 0;
+}
+
+:global .dropdown-menu{
+    background: #434B56;
+    color: red;
+}
+
+:global .dropdown-menu > li > a{
+    color: #FFFFFF;
+}
+
+:global .dropdown-menu > li > a:hover {
+    background: #434B56;
+    color: #b9b9b9;
+}
+
+.nav_dropdown {
+    display: flex !important;
+    background-color: #434B56;
+}
+
+.logout_menu {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+.logout_menu .nav_avatar {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.logout_menu > span {
+    margin-left: 5px;
+}
+
+.glyphicon_search {
+    color: #FFFFFF;
+}
+
+.search_input {
+    background: #434B56;
+    border: 1px solid #AAAAAA;
+}

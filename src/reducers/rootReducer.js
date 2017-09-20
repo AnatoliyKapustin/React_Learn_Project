@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import login from './profile';
+import profile from './profile';
 
 let rootReducer = combineReducers({
-    login,
+    profile,
 });
 
 export default rootReducer;

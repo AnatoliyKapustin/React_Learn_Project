@@ -1,24 +1,31 @@
-import {LOGIN, SUCCESS_LOGIN, UNSUCCESSFUL_LOGIN} from '../constants/login/login';
+import * as actionTypes from '../constants/actionTypes';
 import {apiLogin} from '../api/api'
 
 const loginAction = () => {
     return {
-        type: LOGIN
+        type: actionTypes.LOGIN
     }
 };
 
 const successLogin = (token) => {
     return {
-        type: SUCCESS_LOGIN,
+        type: actionTypes.SUCCESS_LOGIN,
         token
     }
 };
 
 const loginFail = (login, password) => {
     return {
-        type: UNSUCCESSFUL_LOGIN,
+        type: actionTypes.UNSUCCESSFUL_LOGIN,
         login,
         password
+    }
+};
+
+const logOut = () => {
+    localStorage.setItem("token", undefined);
+    return{
+        type: actionTypes.LOGOUT
     }
 };
 
@@ -26,14 +33,15 @@ export function loginUser(login, password) {
     return dispatch => {
         dispatch(loginAction());
         new Promise((resolve, reject) => {
-            let uuid = apiLogin(login, password);
-            if (uuid) {
-                resolve(uuid)
+            let token = apiLogin(login, password);
+            if (token) {
+                localStorage.setItem("token", token);
+                resolve(token)
             }
             else {
                 reject()
             }
-        }).then((uuid) => dispatch(successLogin(uuid)))
+        }).then((token) => dispatch(successLogin(token)))
             .catch(error => dispatch(loginFail(login, password)))
     };
 }

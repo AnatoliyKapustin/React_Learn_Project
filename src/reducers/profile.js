@@ -1,23 +1,29 @@
-import {LOGIN, SUCCESS_LOGIN, UNSUCCESSFUL_LOGIN} from '../constants/login/login';
+import * as actionTypes from '../constants/actionTypes';
 
-const login = (state = {}, action) => {
+const profile = (state = {}, action) => {
     switch (action.type) {
-        case LOGIN:
+        case actionTypes.LOGIN:
             return {};
-        case SUCCESS_LOGIN:
+        case  actionTypes.LOGOUT:
+            return {};
+        case actionTypes.SUCCESS_LOGIN:
             return {
                 token: action.token,
             };
-        case  UNSUCCESSFUL_LOGIN:
+        case  actionTypes.UNSUCCESSFUL_LOGIN:
             return {
                 login: action.login,
                 password: action.password,
-                failMessage: action.failMessage,
                 failMessage: true,
+            };
+        case  actionTypes.GET_USER:
+            return {
+                user: action.user,
+                token: state.token
             };
         default:
             return state;
     }
 };
 
-export default login;
+export default profile;

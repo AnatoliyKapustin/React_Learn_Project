@@ -11,13 +11,12 @@ class Page extends Component {
 
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         this.props.dispatch(loginUser(this.login.value, this.password.value));
         event.preventDefault();
-    }
+    };
 
     render() {
         console.log("login: " + this.props.login)
@@ -45,9 +44,9 @@ class Page extends Component {
 
 function mapStateToProps(state) {
     return {
-        login: state.login.login,
-        password: state.login.password,
-        failMessage: state.login.failMessage
+        login: state.profile.login,
+        password: state.profile.password,
+        failMessage: state.profile.failMessage
     }
 }
 
