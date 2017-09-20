@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const sassThreadLoader = require('thread-loader');
 
@@ -15,6 +16,7 @@ sassThreadLoader.warmup({workerParallelJobs: 2}, ['sass-loader', 'css-loader', '
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;
 const sourcePath = path.join(__dirname, './src');
+const publicDir = path.join(__dirname, 'public/images');
 const buildDirectory = path.join(__dirname, './build');
 
 const stats = {
@@ -43,6 +45,11 @@ module.exports = function (env) {
     let cssLoader;
 
     const plugins = [
+
+        new CopyWebpackPlugin([
+            { from: publicDir, to: 'static' }
+        ]),
+
         new webpack.optimize.CommonsChunkPlugin({
             async: true,
             children: true,
@@ -202,7 +209,7 @@ module.exports = function (env) {
     if (serviceWorkerBuild) {
         plugins.push(
             new SWPrecacheWebpackPlugin({
-                cacheId: 'budgeting-app',
+                cacheId: 'project-management-app',
                 filename: 'sw.js',
                 maximumFileSizeToCacheInBytes: 800000,
                 mergeStaticsConfig: true,
@@ -296,7 +303,7 @@ module.exports = function (env) {
         stats: stats,
 
         devServer: {
-            contentBase: './app',
+            contentBase: './src',
             publicPath: '/',
             historyApiFallback: true,
             port: port,
