@@ -3,23 +3,37 @@ import * as actionTypes from '../constants/actionTypes';
 const profile = (state = {}, action) => {
     switch (action.type) {
         case actionTypes.LOGIN:
-            return {};
-        case  actionTypes.LOGOUT:
+            return {
+                ...state,
+                pending: action.payload.pending,
+                logged: action.payload.logged
+            };
+        case actionTypes.LOGOUT:
             return {};
         case actionTypes.SUCCESS_LOGIN:
+            let token = action.payload.token;
+            let pending = action.payload.pending;
+            let logged = action.payload.logged;
             return {
-                token: action.token,
+                ...state,
+                pending,
+                logged,
+                token
             };
         case  actionTypes.UNSUCCESSFUL_LOGIN:
+            let login = action.login;
+            let password = action.password;
             return {
-                login: action.login,
-                password: action.password,
+                ...state,
+                login,
+                password,
                 failMessage: true,
             };
-        case  actionTypes.GET_USER:
+        case actionTypes.GET_USER:
+            let user = action.user;
             return {
-                user: action.user,
-                token: state.token
+                ...state,
+                user
             };
         default:
             return state;

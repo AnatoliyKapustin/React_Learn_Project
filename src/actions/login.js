@@ -3,14 +3,22 @@ import {apiLogin} from '../api/api'
 
 const loginAction = () => {
     return {
-        type: actionTypes.LOGIN
+        type: actionTypes.LOGIN,
+        payload: {
+            pending: true,
+            logged: false
+        }
     }
 };
 
 const successLogin = (token) => {
     return {
         type: actionTypes.SUCCESS_LOGIN,
-        token
+        payload: {
+            token,
+            pending: false,
+            logged: true
+        }
     }
 };
 
@@ -24,18 +32,19 @@ const loginFail = (login, password) => {
 
 const logOut = () => {
     localStorage.setItem("token", undefined);
-    return{
+    return {
         type: actionTypes.LOGOUT
     }
 };
 
 export function loginUser(login, password) {
-    return dispatch => {
+    return (dispatch) => {
         dispatch(loginAction());
         new Promise((resolve, reject) => {
             let token = apiLogin(login, password);
             if (token) {
                 localStorage.setItem("token", token);
+                localStorage.setItem("logged", true);
                 resolve(token)
             }
             else {
@@ -44,4 +53,10 @@ export function loginUser(login, password) {
         }).then((token) => dispatch(successLogin(token)))
             .catch(error => dispatch(loginFail(login, password)))
     };
+}
+
+export function logout() {
+    return dispatch => {
+        dispatch(logOut())
+    }
 }

@@ -6,7 +6,8 @@ import rootReducer from '../reducers/rootReducer';
 const getStateWithToken = () => {
     return {
         profile: {
-            token: localStorage.getItem("token")
+            token: localStorage.getItem("token"),
+            logged: localStorage.getItem("logged")
         }
     }
 };

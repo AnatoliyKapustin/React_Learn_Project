@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Page from './Page';
+import LoginForm from './LoginForm';
 import style from './css/login.css'
 
 class LoginPage extends Component {
@@ -7,7 +7,7 @@ class LoginPage extends Component {
     render() {
         return (
             <div className={`text-center ${style.container}`}>
-                <Page/>
+                <LoginForm/>
             </div>
         )
     }

@@ -1,46 +1,25 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux"
-import {Switch, Route, Redirect, BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import LoginPage from '../../components/login/LoginPage'
-import MainPageContainer from "../MainPage/MainPageContainer";
+import AuthorizedComponent from "../../components/login/AuthorizedComponent";
+import PrimaryLayout from "../MainPage/PrimaryLayout";
+
+import style from './style.css';
 
 class App extends Component {
 
     render() {
-        let token = this.props.token;
         return <BrowserRouter>
-            <Switch>
-                <Route path="/login" render={props => (
-                    !token ? (
-                        <LoginPage {...props}/>
-                    ) : (
-                        <Redirect to={{
-                            pathname: '/',
-                            state: {from: props.location}
-                        }}/>
-                    )
-                )}
-                />
+            <div className={style.App}>
+                <Switch>
+                    <Route exact path="/auth" component={LoginPage}/>
+                    <AuthorizedComponent path="/" component={PrimaryLayout}/>
+                    <Redirect to="/auth"/>
+                </Switch>
+            </div>
 
-                <Route path="/" render={props => (
-                    token ? (
-                        <MainPageContainer {...props}/>
-                    ) : (
-                        <Redirect to={{
-                            pathname: '/login',
-                            state: {from: props.location}
-                        }}/>
-                    )
-                )}/>
-            </Switch>
         </BrowserRouter>
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        token: state.profile.token
-    }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;
