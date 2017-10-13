@@ -20,7 +20,8 @@
       }
     ],
     "react",
-    "flow"
+    "flow",
+    "stage-0"
   ],
   "env": {
     "development": {

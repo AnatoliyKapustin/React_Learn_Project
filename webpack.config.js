@@ -15,9 +15,11 @@ sassThreadLoader.warmup({workerParallelJobs: 2}, ['sass-loader', 'css-loader', '
 // your app from wifi or a virtual machine
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;
-const sourcePath = path.join(__dirname, './src');
+const sourcePath = path.join(__dirname, 'src');
+const prodHtmlTemplate = path.join(__dirname, 'src/index.prod.ejs');
+const devHtmlTemplate = path.join(__dirname, 'src/index.dev.ejs');
 const publicDir = path.join(__dirname, 'public/images');
-const buildDirectory = path.join(__dirname, './build');
+const buildDirectory = path.join(__dirname, 'build');
 
 const stats = {
     assets: true,
@@ -40,7 +42,7 @@ module.exports = function (env) {
 
     const serviceWorkerBuild = env && env.sw;
 
-    const htmlTemplate = isProd ? 'index.prod.ejs' : 'index.dev.ejs';
+    const htmlTemplate = isProd ? prodHtmlTemplate : devHtmlTemplate;
 
     let cssLoader;
 

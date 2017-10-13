@@ -4,6 +4,8 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {AppContainer} from 'react-hot-loader';
 
+import "./index.css"
+
 import App from './containers/App';
 import store from './stores/index';
 
