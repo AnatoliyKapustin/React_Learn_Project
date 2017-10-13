@@ -1,7 +1,11 @@
-.IssuesContainer{
-    width: 82%;
+.IssuesContainer {
     height: 100%;
+    width: 100%;
     float: left;
     background: #FFFFFF;
-    margin-left: 10px;
+}
+
+.fullHeight {
+    height: 100%;
+    padding-right: 0;
 }

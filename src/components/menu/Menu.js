@@ -21,12 +21,9 @@ class Menu extends Component {
     };
 
     render() {
-
-        const {match} = this.props;
-
         return (
-            <ul className={style.ListContainer}>
-                <li>
+            <ul className={style.listContainer}>
+                <li className={style.menuItem}>
                     <Route exact path="/issues" children={({match}) => (
                         <Link to="issues">
                             <div className={match && style.active}>
@@ -35,13 +32,13 @@ class Menu extends Component {
                         </Link>
                     )}/>
                 </li>
-                <li>
+                <li className={style.menuItem}>
                     <Route exact path="/projects" children={({match}) => (
                         <Link to="projects">
                             <div className={match && style.active}>
                                 <span>ПРОЕКТЫ</span>
                                 <Glyphicon glyph="glyphicon glyphicon-plus"
-                                           className={style.AddProjectPlus}
+                                           className={style.addProjectPlus}
                                            onClick={this.handlePlusClick}/>
                             </div>
                         </Link>
@@ -50,7 +47,7 @@ class Menu extends Component {
                 {
                     this.state.showInput ?
                         <div>
-                            <input type="text" className={style.ProjectNameInput}/>
+                            <input type="text" className={style.projectNameInput}/>
                         </div> : null
                 }
                 <Route exact path="/projects" render={() => (

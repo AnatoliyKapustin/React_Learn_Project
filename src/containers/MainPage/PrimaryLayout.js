@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {Col, Grid, Row} from "react-bootstrap"
 import NavBar from "../../components/navbar/Navbar"
 import Menu from "../../components/menu/Menu"
@@ -16,13 +16,11 @@ class PrimaryLayout extends Component {
             <Grid fluid className={style.MainContainer}>
                 <NavBar/>
                 <Row className={style.ContentContainer}>
-                    <Col sm={2} className={menu.Menu}>
+                    <Col sm={2} className={menu.menu}>
                         <Menu/>
                     </Col>
-                    <Switch>
-                        <Route path="/issues" component={Issues}/>
-                        <Route path="/projects" component={Projects}/>
-                    </Switch>
+                    <Route path="/issues" component={Issues}/>
+                    <Route path="/projects" component={Projects}/>
                 </Row>
             </Grid>
         )

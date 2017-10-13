@@ -1,15 +1,7 @@
-:global .container {
-    margin: 0 0 0 0;
-    padding: 0 15px 0 15px;
-    width: 100%;
-    background: #434B56;
-}
-
 :global .navbar-default {
     border: none;
     background: none;
     margin: 0 !important;
-    height: 5%;
 }
 
 :global .btn-link:focus, :global .btn-link:hover {
@@ -17,61 +9,43 @@
     text-decoration: none;
 }
 
-:global .navbar-form.navbar-left {
-    padding: 10px 15px 10px 0;
-}
-
-:global .navbar-default .navbar-form {
+.inputCol {
     border: none;
+    padding: 0 !important;
 }
 
-@media (min-width: 768px) {
-    :global .navbar-form .form-control {
-        width: 100%;
-    }
-
-    :global .navbar-default .navbar-form {
-        border: none;
-        width: 18%;
-        padding: 10px 15px 0 0;
-        margin: 0;
-    }
-
-    :global .navbar-form .form-group {
-        width: 100%;
-    }
+.fullSizeInput {
+    width: 100% !important;
 }
 
-.nav_dropdown {
-    display: flex !important;
-    background-color: #434B56;
+.navUserBlock{
+    margin: 0 !important;
 }
 
-.logout_menu {
+.navbarLogout {
     color: #FFFFFF !important;
     text-decoration: none;
 }
 
-.logout_menu .nav_avatar {
+.navbarLogout .navAvatar {
     display: inline-block;
     width: 40px;
     height: 40px;
 }
 
-.logout_menu > span {
+.navbarLogout > span {
     margin-left: 5px;
 }
 
-.glyphicon_search {
+.glyphiconSearch {
     color: #FFFFFF;
 }
 
-.SearchInput {
+.searchInput {
     background: #434B56;
-    width: 100%;
 }
 
-.SearchInput:focus {
+.searchInput:focus {
     color: #FFFFFF;
     background-color: #434B56;
     border-color: #AAAAAA;
@@ -112,7 +86,7 @@
     height: 5px !important;;
 }
 
-.dropdownLogout{
+.dropdownLogout {
     background-color: #F0F0F0;
 }
 

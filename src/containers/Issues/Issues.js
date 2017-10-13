@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Col} from "react-bootstrap"
 import style from "./css/issues.css"
 
 class Issues extends Component {
@@ -9,9 +10,11 @@ class Issues extends Component {
 
     render() {
         return (
-            <div className={style.IssuesContainer}>
+            <Col sm={10} className={style.fullHeight}>
+                <div className={style.IssuesContainer}>
 
-            </div>
+                </div>
+            </Col>
         )
     }
 

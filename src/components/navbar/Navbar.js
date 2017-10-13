@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Dropdown, FormControl, FormGroup, Glyphicon, Image, MenuItem, Nav, Navbar} from 'react-bootstrap'
+import {Col, Dropdown, FormControl, FormGroup, Glyphicon, Image, MenuItem, Nav, Navbar} from 'react-bootstrap'
 import {connect} from 'react-redux';
 import {getUser} from "../../actions/user"
 import {logout} from "../../actions/login";
@@ -31,26 +31,27 @@ class NavBar extends Component {
         console.log(this.props);
         return (
             <Navbar fluid>
-                <Navbar.Form pullLeft>
-                    <FormGroup>
-                        <FormControl type="text" placeholder="Поиск задач" className={style.SearchInput}/>
-                        <FormControl.Feedback>
-                            <Glyphicon glyph="glyphicon glyphicon-search" className={style.glyphicon_search}/>
-                        </FormControl.Feedback>
-                    </FormGroup>
-                </Navbar.Form>
-                <Nav pullRight>
-                    <Dropdown title={"Logout"} id="logout_dropdown" bsStyle="link"
-                              className={`${style.nav_dropdown}`}>
-                        <Dropdown.Toggle bsStyle="link" className={style.logout_menu}>
-                            <Image src={user.avatar} className={`${style.nav_avatar} rounded-0`} alt="avatar"
+                <Col sm={2} className={style.inputCol}>
+                    <Navbar.Form pullLeft className={`${style.inputCol} ${style.fullSizeInput}`}>
+                        <FormGroup className={style.fullSizeInput}>
+                            <FormControl type="text" placeholder="Поиск задач"
+                                         className={`${style.searchInput} ${style.fullSizeInput}`}/>
+                            <FormControl.Feedback>
+                                <Glyphicon glyph="glyphicon glyphicon-search" className={style.glyphiconSearch}/>
+                            </FormControl.Feedback>
+                        </FormGroup>
+                    </Navbar.Form>
+                </Col>
+                <Nav pullRight className={style.navUserBlock}>
+                    <Dropdown title={"Logout"} id="logout_dropdown" bsStyle="link">
+                        <Dropdown.Toggle bsStyle="link" className={style.navbarLogout}>
+                            <Image src={user.avatar} className={`${style.navAvatar} rounded-0`} alt="avatar"
                                    responsive/>
                             <span>{user.name}</span>
                         </Dropdown.Toggle>
                         <Dropdown.Menu className={style.logoutMenu}>
                             <MenuItem header className={style.logoutDropdownHeader}>
-                                <Image src={user.avatar} className={`${style.dropdownLogo} rounded-0`} alt="avatar"
-                                       responsive/>
+                                <Image src={user.avatar} className={`${style.dropdownLogo} rounded-0`} alt="avatar"/>
                                 <span className={style.dropdownUserName}>{user.name}</span>
                             </MenuItem>
                             <MenuItem divider className={style.dropdownDivider}/>

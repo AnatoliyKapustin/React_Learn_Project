@@ -1,30 +1,33 @@
-.Menu {
+.menu {
     height: 100%;
     background-color: #4B5966;
-    width: 17%;
     padding: 0;
 }
 
-.ListContainer {
+.listContainer {
     list-style: none;
     padding: 0;
 }
 
-.ListContainer div {
+.menuItem {
     color: #dfdfdf;
     margin: 0;
     text-align: left;
     border-radius: 0;
     height: 40px;
-    background-color: #4B5966;
+    background-color: #52606D;
+
+}
+
+.menuItem div {
     padding: 10px 10px 10px 20px;
 }
 
-.ListContainer > li span {
+.listContainer > li span {
     color: #b9b9b9;
 }
 
-.ListContainer > li a:hover, li a:visited {
+.listContainer > li a:hover, li a:visited {
     text-decoration: none;
 }
 
@@ -32,20 +35,20 @@
     background: #568FCD !important;
 }
 
-.AddProjectPlus {
+.addProjectPlus {
     float: right;
     font-family: Helvetica;
     font-size: 18px;
     color: #93A3B4;
 }
 
-.ProjectNameInput {
+.projectNameInput {
     width: 100%;
     background: #4B5966;
     border: 1px solid #ccc;
 }
 
-.ProjectNameInput:focus {
+.projectNameInput:focus {
     color: #FFFFFF;
     background-color: #434B56;
     border: 1px solid #568FCD;
