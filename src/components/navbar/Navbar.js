@@ -18,7 +18,6 @@ class NavBar extends Component {
 
     componentWillMount() {
         let {dispatch, token} = this.props;
-        console.log("token from nav " + token);
         dispatch(getUser(token))
     }
 

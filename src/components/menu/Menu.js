@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link, Route, withRouter} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import {Glyphicon} from "react-bootstrap";
 
 import style from "./css/style.css"
@@ -63,4 +63,4 @@ class Menu extends Component {
 
 }
 
-export default withRouter(Menu);
+export default Menu;

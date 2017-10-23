@@ -1,12 +1,9 @@
 import React, {Component} from "react";
 import {Col} from "react-bootstrap"
+
 import style from "./css/issues.css"
 
 class Issues extends Component {
-
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (
