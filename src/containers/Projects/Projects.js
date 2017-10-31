@@ -1,14 +1,18 @@
 import React, {Component} from "react";
-
-import projects from "./css/projects.css"
+import {Route} from "react-router-dom";
+import style from "./css/style.css";
+import {Col} from "react-bootstrap";
 
 class Projects extends Component {
 
     render() {
-        return (
-            <div className={projects.projectsContainer}>
 
-            </div>
+        let {fullContent} = this.props;
+
+        return (
+            <Col sm={fullContent ? 7 : 5}
+                 className={`${style.projectsContainer} ${style.fullHeight}`}>
+            </Col>
         )
     }
 

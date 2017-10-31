@@ -9,11 +9,13 @@
     "classnames": "^2.2.5",
     "coveralls": "^2.13.1",
     "d3": "^4.10.0",
+    "moment": "^2.19.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0-beta.5",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^16.0.0-beta.5",
     "react-hot-loader": "^3.0.0-beta.7",
+    "react-moment": "^0.6.5",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -35,6 +37,8 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "copy-webpack-plugin": "^4.2.0",
     "cross-env": "5.0.5",
     "css-loader": "^0.28.5",
     "enzyme": "^2.9.1",
@@ -70,8 +74,7 @@
     "uglify-js": "3.0.27",
     "uglifyjs-webpack-plugin": "0.4.6",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
-    "babel-preset-stage-0": "^6.16.0"
+    "webpack-dev-server": "^2.7.1"
   },
   "scripts": {
     "test": "jest",

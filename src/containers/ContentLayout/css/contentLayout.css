@@ -1,0 +1,9 @@
+.contentContainer {
+    float: left;
+    background: #FFFFFF;
+}
+
+.fullHeight {
+    height: 100%;
+    padding-right: 0;
+}

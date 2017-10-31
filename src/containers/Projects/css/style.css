@@ -1,6 +1,5 @@
-.projectsContainer{
-    height: 100%;
-    width: 100%;
+.projectsContainer {
+    margin-left: 15px;
     float: left;
     background: #FFFFFF;
 }

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Col} from "react-bootstrap";
 import {Route, Switch} from "react-router-dom";
 
-import projects from "./css/projects.css"
+import projects from "./css/style.css"
 
 class ListView extends Component {
 

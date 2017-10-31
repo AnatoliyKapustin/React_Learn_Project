@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {Col, Dropdown, FormControl, FormGroup, Glyphicon, Image, MenuItem, Nav, Navbar} from 'react-bootstrap'
+import {
+    Col, Dropdown, FormControl, FormGroup, Glyphicon, Image, MenuItem, Nav, Navbar,
+    NavDropdown
+} from 'react-bootstrap'
 import {connect} from 'react-redux';
 import {getUser} from "../../actions/user"
 import {logout} from "../../actions/login";
@@ -42,7 +45,7 @@ class NavBar extends Component {
                     </Navbar.Form>
                 </Col>
                 <Nav pullRight className={style.navUserBlock}>
-                    <Dropdown title={"Logout"} id="logout_dropdown" bsStyle="link">
+                    <Dropdown title={"Logout"} id="logout_dropdown">
                         <Dropdown.Toggle bsStyle="link" className={style.navbarLogout}>
                             <Image src={user.avatar} className={`${style.navAvatar} rounded-0`} alt="avatar"
                                    responsive/>

@@ -1,0 +1,33 @@
+.issuePanelContainer{
+    margin-bottom: 1px;
+}
+
+.header {
+    background: #F5F5F5;
+}
+
+.headerText {
+    display: inline-block;
+    padding: 10px 0 10px 10px;
+}
+
+.badge {
+    margin: 10px 10px 10px 0;
+}
+
+.addNewIssueContainer {
+    padding: 20px;
+    color: #357ae8;
+}
+
+.addNewIssueCursor {
+    cursor: pointer;
+}
+
+.addNewIssueText {
+    margin-left: 20px;
+}
+
+.fullWidthInput{
+    width: 90%;
+}
