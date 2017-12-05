@@ -16,7 +16,6 @@
     border-radius: 0;
     height: 40px;
     background-color: #52606D;
-
 }
 
 .menuItem div {
@@ -52,4 +51,38 @@
     color: #FFFFFF;
     background-color: #434B56;
     border: 1px solid #568FCD;
+}
+
+.addProject {
+    display: block;
+    padding: 10px 10px 0 10px;
+}
+
+.addProject > input {
+    width: 100% !important;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-color: #4B5966;
+    color: #fff;
+    padding-left: 20px;
+}
+
+.addProject > input::-webkit-input-placeholder {
+    color: #9BA6B4;
+    font-size: 12px;
+}
+
+.projectMenuItem {
+    color: #dfdfdf;
+    height: 35px;
+    padding: 8px 5px 8px 40px;
+    background-color: transparent;
+}
+
+.selected {
+    color: #4d90fe;
+}
+
+.projectMenuItem .glyphIcon {
+    margin-right: 10px;
 }

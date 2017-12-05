@@ -6,7 +6,6 @@ import Projects from "../../containers/Projects/Projects"
 class ContentLayout extends Component {
 
     render() {
-        let {match} = this.props;
         return (
             <Switch>
                 <Route exact path="/issues" component={() => (
@@ -18,7 +17,6 @@ class ContentLayout extends Component {
             </Switch>
         )
     }
-
 }
 
 export default withRouter(ContentLayout);

@@ -3,7 +3,6 @@ import {Badge, Collapse} from "react-bootstrap"
 
 import style from "./css/style.css"
 import IssueItem from "./IssueItem";
-import AddNewIssueInput from "./AddNewIssueInput";
 import AddNewIssue from "./AddNewIssue";
 
 class IssueItemPanel extends Component {
@@ -30,7 +29,7 @@ class IssueItemPanel extends Component {
         this.setState({expanded: !this.state.expanded});
     };
 
-    issuesToIssueItem = (issue) => {
+    issuesToIssueItem = (issues) => {
         return <IssueItem issue={issue}/>
     };
 

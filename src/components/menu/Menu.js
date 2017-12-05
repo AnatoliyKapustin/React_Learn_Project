@@ -1,8 +1,10 @@
 import React, {Component} from "react";
-import {Link, Route} from "react-router-dom";
-import {Glyphicon} from "react-bootstrap";
+import {Link, Route, withRouter} from "react-router-dom";
+import {Form, Glyphicon} from "react-bootstrap";
 
 import style from "./css/style.css"
+import {createProject} from "../../actions/project";
+import {connect} from "react-redux";
 
 class Menu extends Component {
 
@@ -20,12 +22,26 @@ class Menu extends Component {
         });
     };
 
+    handleCreateProject = (event) => {
+        event.preventDefault();
+        let {
+            token
+        } = this.props;
+        this.props.createProject(this.project.value, token);
+        this.project.value = "";
+    };
+
     render() {
+
+        let {
+            projects
+        } = this.props;
+
         return (
             <ul className={style.listContainer}>
                 <li className={style.menuItem}>
-                    <Route exact path="/issues" children={({match}) => (
-                        <Link to="issues">
+                    <Route path="/issues" children={({match}) => (
+                        <Link to="/issues">
                             <div className={match && style.active}>
                                 <span>МОЯ РАБОТА</span>
                             </div>
@@ -33,8 +49,8 @@ class Menu extends Component {
                     )}/>
                 </li>
                 <li className={style.menuItem}>
-                    <Route exact path="/projects" children={({match}) => (
-                        <Link to="projects">
+                    <Route path="/projects" children={({match}) => (
+                        <Link to="/projects">
                             <div className={match && style.active}>
                                 <span>ПРОЕКТЫ</span>
                                 <Glyphicon glyph="glyphicon glyphicon-plus"
@@ -46,21 +62,44 @@ class Menu extends Component {
                 </li>
                 {
                     this.state.showInput ?
-                        <div>
-                            <input type="text" className={style.projectNameInput}/>
-                        </div> : null
+                        <Form inline className={style.addProject} onSubmit={this.handleCreateProject}>
+                            <input type="text" ref={(project) => this.project = project}
+                                   placeholder="Введите название"/>
+                        </Form> : null
                 }
-                <Route exact path="/projects" render={() => (
-                    <li>
-                        <ul>
-                            <li>adasd</li>
-                        </ul>
-                    </li>
-                )}/>
+
+                <Route path="/projects" render={() =>
+                    <div>
+                        {projects.map(project =>
+                            <Route key={project.id} path={`/projects/${project.id}`} children={({match}) => (
+                                <Link to={`/projects/${project.id}`}>
+                                    <div className={`${style.projectMenuItem} ${match && style.selected}`}>
+                                        <Glyphicon className={style.glyphIcon} glyph="glyphicon glyphicon-list-alt"
+                                                   aria-hidden="true"/>
+                                        {project.name}
+                                    </div>
+                                </Link>
+                            )}/>)}
+                    </div>
+                }/>
             </ul>
         )
     }
 
 }
 
-export default Menu;
+const mapStateToProps = (state) => {
+    return {
+        token: state.profile.token,
+        projects: state.projects.list
+
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createProject: (name, token) => dispatch(createProject(name, token)),
+    }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu));

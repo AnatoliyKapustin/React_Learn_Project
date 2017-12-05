@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {Badge, Button, Col, Collapse, Image, Panel} from "react-bootstrap"
-import {Link} from "react-router-dom";
+import {Image} from "react-bootstrap"
 
 import style from "./css/style.css"
+import {connect} from "react-redux";
 
 class IssueItem extends Component {
 
@@ -13,19 +13,33 @@ class IssueItem extends Component {
 
     render() {
         let {
-            issue
+            issue,
+            user
         } = this.props;
 
+        if (!user) {
+            return null
+        }
         return (
-            <div className={style.header}>
-                <Image  className={` rounded-0`} alt="avatar"
+            <div className={`${style.header1} ${style.fullWidth}`}>
+                <Image src={user.avatar} className={`${style.issueDoubleImageBottom} rounded-0`} alt="avatar"
                        responsive/>
-                <Image className={`rounded-0`} alt="avatar"
+                <Image src={user.avatar} className={`${style.issueDoubleImageTop} rounded-0`} alt="avatar"
                        responsive/>
+
+                <span className={style.issueTitle}>
+                    taefdfasd
+                </span>
             </div>
         )
     }
 
 }
 
-export default IssueItem;
+function mapStateToProps(state) {
+    return {
+        user: state.profile.user
+    }
+}
+
+export default connect(mapStateToProps)(IssueItem);

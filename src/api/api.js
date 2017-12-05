@@ -1,3 +1,8 @@
+import {idGenerator} from "../generators/idGenerator";
+import {getUserByToken} from "../actions/user";
+
+let generator = idGenerator();
+
 export function apiLogin(login, password) {
     let user = getUsers().filter(user => (user.email === login || user.login === login) && user.password === password)[0];
     console.log("login uuid " + user.uuid);
@@ -17,9 +22,18 @@ export function getUsers() {
     ]
 }
 
-export function createIssue(){
+export function createIssue() {
     let issue = {};
     return issue;
+}
+
+export function createProjectApi(name, token) {
+    return {
+        id: generator.next().value,
+        name,
+        status: "YELLOW",
+        participants: [getUserByToken(token).uuid],
+    }
 }
 
 function generateSessionToken() {

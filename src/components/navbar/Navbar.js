@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {
-    Col, Dropdown, FormControl, FormGroup, Glyphicon, Image, MenuItem, Nav, Navbar,
-    NavDropdown
-} from 'react-bootstrap'
+import {Col, Dropdown, FormControl, FormGroup, Glyphicon, Image, MenuItem, Nav, Navbar} from 'react-bootstrap'
 import {connect} from 'react-redux';
 import {getUser} from "../../actions/user"
 import {logout} from "../../actions/login";

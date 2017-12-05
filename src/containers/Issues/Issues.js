@@ -10,13 +10,13 @@ class Issues extends Component {
 
     todayIssues = (issues) => {
         let now = moment().startOf("day").locale('ru');
-        let issuesToday = {}
+        let filteredIssues = {};
         return <IssueItemPanel header={"НА СЕГОДНЯ"}
                                startDate={now.format("MMM DD")}
                                filteredIssues
                                showAddIssue
                                expanded/>
-    }
+    };
 
     thisWeek = (issues) => {
         let {
@@ -75,7 +75,7 @@ class Issues extends Component {
 
         return (
             <Col sm={10} className={`${style.IssuesContainer} ${style.fullHeight}`}>
-                <Col sm={fullContent ? 8 : 5}
+                <Col sm={issues.length === 0 ? 8 : 5}
                      className={`${style.issuesTasksContainer} ${style.fullHeight}`}>
                     <div className={`${style.issues} ${style.fullHeight}`}>
                         {this.todayIssues(issues)}
@@ -98,6 +98,6 @@ const mapStateToProps = (state) => {
     return {
         issue: state.issues.list
     }
-}
+};
 
 export default connect(mapStateToProps)(Issues);

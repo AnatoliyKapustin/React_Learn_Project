@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Col, Glyphicon, Panel} from "react-bootstrap"
+import {Glyphicon} from "react-bootstrap"
 
 import style from "./css/style.css"
 import AddNewIssueInput from "./AddNewIssueInput";
@@ -8,7 +8,7 @@ class AddNewIssue extends Component {
 
     state = {
         showInput: false,
-    }
+    };
 
     handleAddNewIssue = () => {
         this.setState({
