@@ -248,7 +248,8 @@ module.exports = function (env) {
         devtool: isProd ? 'cheap-source-map' : 'eval-cheap-module-source-map',
         context: sourcePath,
         entry: {
-            main: entryPoint,
+            polyfill: 'babel-polyfill',
+            main: entryPoint
         },
         output: {
             path: buildDirectory,
@@ -305,7 +306,7 @@ module.exports = function (env) {
         stats: stats,
 
         devServer: {
-            contentBase: './src',
+            contentBase: './build',
             publicPath: '/',
             historyApiFallback: true,
             port: port,
