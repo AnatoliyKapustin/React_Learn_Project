@@ -69,7 +69,7 @@ class Menu extends Component {
                 }
 
                 <Route path="/projects" render={() =>
-                    <div>
+                    <div className={style.scrollDiv}>
                         {projects.map(project =>
                             <Route key={project.id} path={`/projects/${project.id}`} children={({match}) => (
                                 <Link to={`/projects/${project.id}`}>

@@ -4,20 +4,15 @@ import LoginPage from '../../components/login/LoginPage'
 import AuthorizedComponent from "../../components/login/AuthorizedComponent";
 import PrimaryLayout from "../PrimaryLayout/PrimaryLayout";
 
-import style from './style.css';
-
 class App extends Component {
 
     render() {
         return <BrowserRouter>
-            <div className={style.App}>
-                <Switch>
-                    <Route exact path="/auth" component={LoginPage}/>
-                    <AuthorizedComponent path="/" component={PrimaryLayout}/>
-                    <Redirect to="/auth"/>
-                </Switch>
-            </div>
-
+            <Switch>
+                <Route exact path="/auth" component={LoginPage}/>
+                <AuthorizedComponent path="/" component={PrimaryLayout}/>
+                <Redirect to="/auth"/>
+            </Switch>
         </BrowserRouter>
     }
 }

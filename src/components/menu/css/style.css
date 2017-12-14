@@ -7,6 +7,11 @@
 .listContainer {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    margin: 0;
 }
 
 .menuItem {
@@ -85,4 +90,14 @@
 
 .projectMenuItem .glyphIcon {
     margin-right: 10px;
+}
+
+.scrollDiv {
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }

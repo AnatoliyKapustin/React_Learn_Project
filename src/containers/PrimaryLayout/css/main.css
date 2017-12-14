@@ -1,13 +1,19 @@
 .MainContainer {
+    flex-direction: column;
+    display: flex;
     width: 100%;
     background: #434B56;
     height: 100%;
     padding: 0;
-    overflow: hidden;
 }
 
 .ContentContainer {
     height: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0;
+    padding-top: 55px;
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
 }

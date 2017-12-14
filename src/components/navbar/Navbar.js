@@ -29,7 +29,7 @@ class NavBar extends Component {
         console.log("d from nav" + user);
         console.log(this.props);
         return (
-            <Navbar fluid>
+            <Navbar fluid className={style.appNavbar}>
                 <Col sm={2} className={style.inputCol}>
                     <Navbar.Form pullLeft className={`${style.inputCol} ${style.fullSizeInput}`}>
                         <FormGroup className={style.fullSizeInput}>

@@ -93,3 +93,8 @@
 .dropdown-menu > li > a:hover {
     background-color: #DADADA !important;
 }
+
+.appNavbar{
+    position: fixed;
+    width: 100%;
+}
