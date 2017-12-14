@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const sassThreadLoader = require('thread-loader');
@@ -40,8 +39,6 @@ module.exports = function (env) {
     const nodeEnv = env && env.prod ? 'production' : 'development';
     const isProd = nodeEnv === 'production';
 
-    const serviceWorkerBuild = env && env.sw;
-
     const htmlTemplate = isProd ? prodHtmlTemplate : devHtmlTemplate;
 
     let cssLoader;
@@ -49,7 +46,7 @@ module.exports = function (env) {
     const plugins = [
 
         new CopyWebpackPlugin([
-            { from: publicDir, to: 'static' }
+            {from: publicDir, to: 'static'}
         ]),
 
         new webpack.optimize.CommonsChunkPlugin({
@@ -206,24 +203,6 @@ module.exports = function (env) {
                 },
             },
         ]
-    }
-
-    if (serviceWorkerBuild) {
-        plugins.push(
-            new SWPrecacheWebpackPlugin({
-                cacheId: 'project-management-app',
-                filename: 'sw.js',
-                maximumFileSizeToCacheInBytes: 800000,
-                mergeStaticsConfig: true,
-                minify: true,
-                runtimeCaching: [
-                    {
-                        handler: 'cacheFirst',
-                        urlPattern: /(.*?)/,
-                    },
-                ],
-            })
-        );
     }
 
     const entryPoint = isProd
