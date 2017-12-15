@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+﻿import React, {Component} from "react";
 import {Link, Route, withRouter} from "react-router-dom";
 import {Form, Glyphicon} from "react-bootstrap";
 
@@ -10,6 +10,7 @@ class Menu extends Component {
 
     state = {
         showInput: false,
+        validationInput: false
     };
 
     constructor(props) {
@@ -24,11 +25,23 @@ class Menu extends Component {
 
     handleCreateProject = (event) => {
         event.preventDefault();
+
         let {
             token
         } = this.props;
-        this.props.createProject(this.project.value, token);
+
+        let validated = this.validateInput(this.project.value);
+        if (validated) {
+            this.props.createProject(this.project.value, token);
+        }
         this.project.value = "";
+        this.setState({
+            validationInput: !validated
+        });
+    };
+
+    validateInput = (value) => {
+        return value !== "";
     };
 
     render() {
@@ -62,9 +75,11 @@ class Menu extends Component {
                 </li>
                 {
                     this.state.showInput ?
-                        <Form inline className={style.addProject} onSubmit={this.handleCreateProject}>
-                            <input type="text" ref={(project) => this.project = project}
-                                   placeholder="Введите название"/>
+                        <Form inline className={this.state.validationInput ? style.inputValidation : style.addProject}
+                              onSubmit={this.handleCreateProject}>
+                            <input type="text"
+                                   ref={(project) => this.project = project}
+                                   placeholder={`${this.state.validationInput ? "Не может быть пустым!" : "Введите название"}`}/>
                         </Form> : null
                 }
 

@@ -69,12 +69,28 @@
     border: 1px solid #ccc;
     background-color: #4B5966;
     color: #fff;
-    padding-left: 20px;
 }
 
-.addProject > input::-webkit-input-placeholder {
+.addProject,.inputValidation > input::-webkit-input-placeholder {
     color: #9BA6B4;
     font-size: 12px;
+}
+
+.inputValidation {
+    display: block;
+    padding: 10px 10px 0 10px;
+}
+
+.inputValidation > input {
+    width: 100% !important;
+    height: 30px;
+    border: 1px solid red;
+    background-color: #4B5966;
+    color: #fff;
+}
+
+.inputValidation > input:focus {
+    /*outline: none;*/
 }
 
 .projectMenuItem {
@@ -93,6 +109,7 @@
 }
 
 .scrollDiv {
+    font-size: 12px;
     margin-top: 10px;
     height: 100%;
     width: 100%;
