@@ -69,6 +69,7 @@
     border: 1px solid #ccc;
     background-color: #4B5966;
     color: #fff;
+    padding: 0 10px 0 10px;
 }
 
 .addProject,.inputValidation > input::-webkit-input-placeholder {

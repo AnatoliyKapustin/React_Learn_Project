@@ -3,7 +3,7 @@ import {Badge, Collapse} from "react-bootstrap"
 
 import style from "./css/style.css"
 import IssueItem from "./IssueItem";
-import AddNewIssue from "./AddNewIssue";
+import AddNewIssue from "../general/AddNewItem";
 
 class IssueItemPanel extends Component {
 
@@ -30,7 +30,7 @@ class IssueItemPanel extends Component {
     };
 
     issuesToIssueItem = (issues) => {
-        return <IssueItem issue={issue}/>
+        return <IssueItem issue={issues}/>
     };
 
     render() {

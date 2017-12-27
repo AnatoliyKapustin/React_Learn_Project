@@ -72,7 +72,7 @@ class Issues extends Component {
             issues,
             fullContent
         } = this.props;
-
+        issues = [];
         return (
             <Col sm={10} className={`${style.IssuesContainer} ${style.fullHeight}`}>
                 <Col sm={issues.length === 0 ? 8 : 5}
@@ -81,7 +81,7 @@ class Issues extends Component {
                         {this.todayIssues(issues)}
                     </div>
                 </Col>
-                <Col sm={fullContent ? 4 : 5} className={`${style.issuesSubtasksContainer} ${style.fullHeight}`}>
+                <Col sm={fullContent ? 4 : 5} className={`${style.issuesTasksContainer} ${style.fullHeight}`}>
                     <div className={`${style.issuesSubtasks} ${style.fullHeight}`}>
                         {this.thisWeek(issues)}
                         {this.nextWeek(issues)}
