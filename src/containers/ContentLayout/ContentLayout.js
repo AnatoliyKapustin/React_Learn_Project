@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Issues from "../../containers/Issues/Issues"
-import Projects from "../../containers/Projects/Projects"
+import ProjectsRoutes from "../Projects/ProjectsRoutes";
 
 class ContentLayout extends Component {
 
@@ -12,11 +12,11 @@ class ContentLayout extends Component {
                     <Issues fullContent/>
                 )}/>
                 <Route exact path="/projects" component={() => (
-                    <Projects fullContent/>
+                    <ProjectsRoutes/>
                 )}/>
             </Switch>
         )
     }
 }
 
-export default withRouter(ContentLayout);
+export default ContentLayout;

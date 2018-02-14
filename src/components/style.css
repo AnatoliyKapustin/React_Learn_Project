@@ -1,4 +1,87 @@
+.issuePanelContainer {
+    margin-bottom: 1px;
+}
 
-.addProjectInput{
+.container {
+    margin: 0 !important;
+}
 
+.header {
+    background: #F5F5F5;
+}
+
+.header1 {
+    background: #F5F5F5;
+    position: relative;
+    display: inline-block;
+}
+
+.headerText {
+    display: inline-block;
+    padding: 10px 0 10px 20px;
+    font-family: "Verdana", serif;
+}
+
+.badge {
+    margin: 10px 10px 10px 0;
+    border-radius: 3px;
+}
+
+.avatar {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.addNewItemContainer {
+    padding: 20px 0 20px 20px;
+    width: 100%;
+    color: #357ae8;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.inputContainer {
+    float: left;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.addNewItemCursor {
+    cursor: pointer;
+}
+
+.avatarContainer {
+    float: left;
+}
+
+.addNewItemText {
+    margin-left: 20px;
+}
+
+.doubleImagesContainer {
+    display: block;
+}
+
+.issueDoubleImageBottom {
+    display: inline;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.issueDoubleImageTop {
+    position: relative;
+    display: inline;
+    z-index: 2;
+    top: 14px;
+    left: -20px;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    width: 40px;
+    height: 40px;
 }

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Col, Form, FormControl, FormGroup, Image} from "react-bootstrap"
 
-import style from "./css/style.css"
+import style from "../style.css"
 import {connect} from "react-redux";
 
 class AddNewItemInput extends Component {

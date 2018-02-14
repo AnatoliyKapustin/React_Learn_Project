@@ -1,35 +1,34 @@
 import React, {Component} from "react";
-import style from "./css/style.css";
+import style from "../css/style.css";
 import {Col} from "react-bootstrap";
-import AddNewItem from "../../components/general/AddNewItem";
-import ProjectViewSwitch from "./components/ProjectViewSwitch"
-import {forLater, forNextWeek, forThisWeek, forTodayOrEarly} from "../../helpers/dateFilter";
-import connect from "react-redux/es/connect/connect";
-import ProjectsFilters from "./components/ProjectsFilters";
-import ProjectsContainer from "./components/ProjectsContainer";
-import IssueItem from "../../components/issues/IssueItem";
+import AddNewItem from "../../../components/general/AddNewItem";
+import {forLater, forNextWeek, forThisWeek, forTodayOrEarly} from "../../../helpers/dateFilter";
+import IssueItem from "../../../components/issues/IssueItem";
+import ProjectsContainer from "../ProjectsContainer";
+import ProjectsFilters from "../../../components/projects/ProjectsFilters";
+import {withRouter} from "react-router-dom";
+import ProjectsView from "../../../components/projects/ProjectsView";
 
-class Projects extends Component {
+class ListView extends Component {
 
     toIssueItemList(issues, filterFunction) {
         let {
             selectedIssueId,
             projects,
-            project,
             currentPath,
-            users,
+            users
         } = this.props;
 
-        return filterFunction(issues).map(project => {
+        return filterFunction(issues).map(issue => {
             let projectName = project ? project.name : undefined;
-            if (!projectName && project.projectId !== undefined) {
-                projectName = projects.filter(project => project.id === project.projectId)[0].name;
+            if (!projectName && issue.projectId !== undefined) {
+                projectName = projects.filter(project => project.id === issue.projectId)[0].name;
             }
-            return (<IssueItem issue={project}
+            return (<IssueItem issue={issue}
                                projectName={projectName}
-                               key={project.id}
-                               to={`${currentPath}/issues/${project.id}`}
-                               selected={selectedIssueId === project.id.toString()}
+                               key={issue.id}
+                               to={`${currentPath}/issues/${issue.id}`}
+                               selected={selectedIssueId === issue.id.toString()}
                                users={users}
                                projectView/>);
         })
@@ -43,9 +42,11 @@ class Projects extends Component {
     render() {
 
         let {
+            location,
             fullContent,
+            selectedKey,
             headerText,
-            projects
+            issues
         } = this.props;
 
         let today = null;
@@ -53,30 +54,29 @@ class Projects extends Component {
         let nextWeek = null;
         let later = null;
 
-        if (forTodayOrEarly(projects).length > 0) {
+        if (forTodayOrEarly(issues).length > 0) {
             today = <ProjectsContainer header="Сегодня или раньше"
-                                       items={this.toIssueItemList(projects, forTodayOrEarly)}
+                                       items={this.toIssueItemList(issues, forTodayOrEarly)}
                                        open/>
         }
 
-        if (forThisWeek(projects).length > 0) {
+        if (forThisWeek(issues).length > 0) {
             thisWeek = <ProjectsContainer header="Эта неделя"
-                                          items={this.toIssueItemList(projects, forThisWeek)}
+                                          items={this.toIssueItemList(issues, forThisWeek)}
                                           open/>
         }
 
-        if (forNextWeek(projects).length > 0) {
+        if (forNextWeek(issues).length > 0) {
             nextWeek = <ProjectsContainer header="Следующая неделя"
-                                          items={this.toIssueItemList(projects, forNextWeek)}
+                                          items={this.toIssueItemList(issues, forNextWeek)}
                                           open/>
         }
 
-        if (forLater(projects).length > 0) {
+        if (forLater(issues).length > 0) {
             later = <ProjectsContainer header="Позже"
-                                       items={this.toIssueItemList(projects, forLater)}
+                                       items={this.toIssueItemList(issues, forLater)}
                                        open/>
         }
-
         return (
             <Col sm={10} className={`${style.mainContainer} ${style.fullHeight}`}>
                 <Col sm={fullContent ? 12 : 7} className={` ${style.projectsContainer} ${style.fullHeight}`}>
@@ -84,7 +84,8 @@ class Projects extends Component {
                         <div className={style.mainHeader}>
                             {headerText ? headerText : "Проекты"}
                         </div>
-                        <ProjectViewSwitch/>
+                        <ProjectsView basePath={location.pathname}
+                                      selectedMenuItem={selectedKey}/>
                         <ProjectsFilters/>
                         <AddNewItem onSubmit={this.handleAddNewTask}/>
                         <div>
@@ -101,10 +102,4 @@ class Projects extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        projects: state.projects.list
-    }
-};
-
-export default connect(mapStateToProps)(Projects);
+export default withRouter(ListView);

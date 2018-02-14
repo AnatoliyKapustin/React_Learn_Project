@@ -18,7 +18,7 @@
     width: 100% !important;
 }
 
-.navUserBlock{
+.navUserBlock {
     margin: 0 !important;
 }
 
@@ -94,7 +94,7 @@
     background-color: #DADADA !important;
 }
 
-.appNavbar{
-    position: fixed;
+.appNavbar {
+    position: absolute;
     width: 100%;
 }

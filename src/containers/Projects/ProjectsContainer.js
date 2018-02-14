@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import style from "../css/style.css"
+import style from "./css/style.css"
 import {Collapse} from "react-bootstrap";
 
 class ProjectsContainer extends Component {

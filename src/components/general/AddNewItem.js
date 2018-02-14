@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {Glyphicon} from "react-bootstrap"
 
-import style from "./css/style.css"
-import AddNewIssueInput from "./AddNewItemInput";
+import style from "../style.css"
+import AddNewItemInput from "./AddNewItemInput";
 
 class AddNewItem extends Component {
 
@@ -25,7 +25,7 @@ class AddNewItem extends Component {
         return (
             <div className={style.addNewItemContainer}>
                 {
-                    this.state.showInput ? <AddNewIssueInput onSubmit={onSubmit}/> :
+                    this.state.showInput ? <AddNewItemInput onSubmit={onSubmit}/> :
                         <div className={style.addNewItemCursor} onClick={this.handleShowInputClick}>
                             <Glyphicon glyph="glyphicon glyphicon-plus"/>
                             <span className={style.addNewItemText}>Новая задача</span>

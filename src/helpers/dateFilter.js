@@ -23,7 +23,7 @@ export function forLater(issues) {
 }
 
 export function filterIssuesByName(issues, name) {
-    if(name === "") {
+    if (name === "") {
         return issues;
     }
     return issues.filter(issue => issue.name.indexOf(name) !== -1);
