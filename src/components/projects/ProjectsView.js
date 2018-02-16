@@ -1,5 +1,5 @@
 import React from "react";
-import {Menu} from "../../constants/constants";
+import {Menu} from "../../constants/Constants";
 import UnderlineMenu from "../general/underlineMenu/UnderlineMenu";
 
 export default function ProjectsView(props) {
@@ -28,6 +28,6 @@ export default function ProjectsView(props) {
     ];
 
     return (
-        <UnderlineMenu selected={selectedMenuItem} options={menuOptions}/>
+        <UnderlineMenu selected={selectedMenuItem} withoutClickHandling options={menuOptions}/>
     );
 }

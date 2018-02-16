@@ -4,11 +4,6 @@
     margin: 0 !important;
 }
 
-:global .btn-link:focus, :global .btn-link:hover {
-    color: #b9b9b9 !important;
-    text-decoration: none;
-}
-
 .inputCol {
     border: none;
     padding: 0 !important;
@@ -27,6 +22,21 @@
     text-decoration: none;
 }
 
+.navbarLogout:hover, .navbarLogout:focus {
+    color: #b9b9b9 !important;
+    text-decoration: none !important;
+}
+
+.navbarLogout[aria-expanded="false"] > :global.caret{
+    border-top: 4px dashed !important;
+    border-bottom: 0 !important;
+}
+
+.navbarLogout[aria-expanded="true"] > :global.caret {
+    border-bottom: 4px dashed !important;
+    border-top: 0 !important;
+}
+
 .navbarLogout .navAvatar {
     display: inline-block;
     width: 40px;
@@ -34,7 +44,7 @@
 }
 
 .navbarLogout > span {
-    margin-left: 5px;
+    margin-left: 5px !important;
 }
 
 .glyphiconSearch {

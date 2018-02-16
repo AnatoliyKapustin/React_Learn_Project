@@ -26,8 +26,6 @@ class NavBar extends Component {
         if (!user) {
             return null
         }
-        console.log("d from nav" + user);
-        console.log(this.props);
         return (
             <Navbar fluid className={style.appNavbar}>
                 <Col sm={2} className={style.inputCol}>
