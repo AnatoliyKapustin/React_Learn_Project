@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import ListView from "./views/ListView";
-import {Menu} from "../../constants/constants";
+import {Menu} from "../../constants/Constants";
 
 class ProjectsRoutes extends Component {
 

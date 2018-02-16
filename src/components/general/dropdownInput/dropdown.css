@@ -1,0 +1,76 @@
+.wrapper {
+    padding-left: 20px;
+    width: 100%;
+    background-color: #F5F8FD;
+    height: 50px;
+}
+
+.minimizeDropdown[aria-expanded="false"] {
+    margin: 15px 0 0 -7px !important;
+}
+
+.minimizeDropdown[aria-expanded="true"] {
+    border-radius: 25px;
+    background: #DFE6F0;
+    margin: 15px 0 0 -7px !important;
+}
+
+.minimizeDropdown > div, span {
+    display: inline-block;
+}
+
+.minimizeDropdown {
+    padding: 0 5px 0 5px;
+}
+
+.minimizeDropdown > span{
+    display: none !important;
+}
+
+.statusMenu {
+    top: 65%;
+    border-radius: 0;
+    padding: 10px 0;
+    margin-left: 13px;
+    border: none;
+    box-shadow: 0 0 5px 1px #888888;
+}
+
+.IssueStatus {
+    height: 20px;
+    width: 20px;
+    border: none;
+    vertical-align: middle;
+    background-color: #ffffff;
+    display: inline-block;
+}
+
+.IssueStatusName {
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.active {
+    background-color: #2296F4 !important;
+}
+
+.done {
+    background-color: #8CC34C !important;
+}
+
+.postponed {
+    background-color: #683AB8 !important;
+}
+
+.canceled {
+    background-color: #9F9D9F !important;
+}
+
+.StatusMenu > li {
+    margin-top: 5px;
+}
+
+.minimizeDropdown:focus, .minimizeDropdown:hover{
+    color: #23527c !important;
+}
