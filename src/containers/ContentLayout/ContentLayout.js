@@ -11,9 +11,7 @@ class ContentLayout extends Component {
                 <Route exact path="/issues" component={() => (
                     <Issues fullContent/>
                 )}/>
-                <Route exact path="/projects" component={() => (
-                    <ProjectsRoutes/>
-                )}/>
+                <Route exact path="/projects" component={ProjectsRoutes}/>
             </Switch>
         )
     }

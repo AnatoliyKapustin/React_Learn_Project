@@ -1,10 +1,16 @@
 import React, {Component} from "react";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import ListView from "./views/ListView";
 import {Menu} from "../../constants/Constants";
+import TableView from "./views/TableView";
 
 class ProjectsRoutes extends Component {
+
+    constructor(props){
+        super(props);
+        console.log("constructor")
+    }
 
     render() {
 
@@ -12,7 +18,7 @@ class ProjectsRoutes extends Component {
             projects,
             issues
         } = this.props;
-
+        console.log("switch");
         return (
             <Switch>
                 <Route exact path="/projects" component={() => (
@@ -21,7 +27,12 @@ class ProjectsRoutes extends Component {
                               selectedKey={Menu.LIST}
                               fullContent/>
                 )}/>
-                <Route exact path="/projects/table"/>
+                <Route strict exact path="/projects/table" component={() => (
+                    <TableView issues={issues}
+                               projects={projects}
+                               selectedKey={Menu.TABLE}
+                               fullContent/>
+                )}/>
                 <Route exact path="/projects/timeline"/>
                 <Route exact path="/projects/issues/:id"/>
                 <Route exact path="/projects/:id"/>
@@ -41,4 +52,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(ProjectsRoutes);
+export default withRouter(connect(mapStateToProps)(ProjectsRoutes));
