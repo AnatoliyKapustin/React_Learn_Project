@@ -7,6 +7,8 @@ import IssueItem from "../../../components/issues/IssueItem";
 import ProjectsContainer from "../ProjectsContainer";
 import ProjectsFilters from "../../../components/projects/ProjectsFilters";
 import ProjectsView from "../../../components/projects/ProjectsView";
+import {connect} from "react-redux";
+import {createIssue} from "../../../actions/issue";
 
 class ListView extends Component {
 
@@ -33,9 +35,14 @@ class ListView extends Component {
         })
     }
 
-    handleAddNewTask = (event) => {
+    handleAddNewTask = (event, input) => {
         event.preventDefault();
+        let {
+            user
+        } = this.props;
 
+        this.props.createIssue(input.value, user.uuid);
+        input.value = "";
     };
 
     render() {
@@ -52,6 +59,8 @@ class ListView extends Component {
         let thisWeek = null;
         let nextWeek = null;
         let later = null;
+
+        console.log("issues:" + issues);
 
         if (forTodayOrEarly(issues).length > 0) {
             today = <ProjectsContainer header="Сегодня или раньше"
@@ -101,4 +110,16 @@ class ListView extends Component {
 
 }
 
-export default ListView;
+const mapStateToProps = (state) => {
+    return {
+        user: state.profile.user
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createIssue: (name, token) => dispatch(createIssue(name, token)),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListView);

@@ -20,7 +20,7 @@ const profile = (state = {}, action) => {
                 logged,
                 token
             };
-        case  actionTypes.UNSUCCESSFUL_LOGIN:
+        case actionTypes.UNSUCCESSFUL_LOGIN:
             let login = action.login;
             let password = action.password;
             return {

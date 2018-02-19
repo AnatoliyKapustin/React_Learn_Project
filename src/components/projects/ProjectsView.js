@@ -6,6 +6,7 @@ export default function ProjectsView(props) {
 
     let {
         basePath,
+        elementStyle,
         selectedMenuItem
     } = props;
 
@@ -28,6 +29,6 @@ export default function ProjectsView(props) {
     ];
 
     return (
-        <UnderlineMenu selected={selectedMenuItem} withoutClickHandling options={menuOptions}/>
+        <UnderlineMenu selected={selectedMenuItem} menuStyle={elementStyle} withoutClickHandling options={menuOptions}/>
     );
 }

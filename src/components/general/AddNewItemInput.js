@@ -17,16 +17,14 @@ class AddNewItemInput extends Component {
         } = this.props;
 
         return (
-            <Form onSubmit={onSubmit} horizontal className={style.fullWidth}>
+            <Form onSubmit={(event) => onSubmit(event, this.issueInput)} horizontal className={style.fullWidth}>
                 <FormGroup className={style.container}>
                     <div className={style.avatarContainer}>
                         <Image alt="avatar" src={avatar} className={`${style.avatar} rounded-0`} responsive/>
                     </div>
                     <Col sm={11} className={style.inputContainer}>
                         <FormControl type="text"
-                                     inputRef={(input) => {
-                                         this.issueInput = input
-                                     }}
+                                     inputRef={(input) => {this.issueInput = input}}
                         />
                     </Col>
                 </FormGroup>

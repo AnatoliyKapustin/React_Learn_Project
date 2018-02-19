@@ -1,5 +1,7 @@
 import {idGenerator} from "../generators/idGenerator";
 import {getUserByToken} from "../actions/user";
+import {issueStatuses} from "../constants/Constants";
+import moment from "moment";
 
 let generator = idGenerator();
 
@@ -22,9 +24,15 @@ export function getUsers() {
     ]
 }
 
-export function createIssue() {
-    let issue = {};
-    return issue;
+export function createIssue(name, author) {
+    return {
+        id: generator.next().value,
+        creatingDate: moment(),
+        author,
+        participants: [],
+        subtasks: [],
+        status: issueStatuses.ACTIVE.key,
+    };
 }
 
 export function createProjectApi(name, token) {

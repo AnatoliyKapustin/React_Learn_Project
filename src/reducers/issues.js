@@ -7,9 +7,7 @@ const issues = (state = {list: []}, action) => {
                 ...state,
                 list: [
                     ...state.list,
-                    {
-                        ...action.issue,
-                    }
+                    action.issue,
                 ]
             };
         default:

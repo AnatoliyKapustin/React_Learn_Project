@@ -1,18 +1,19 @@
 import * as actionTypes from "../constants/actionTypes";
+import {createIssue as createIssueViaApi} from "../api/api";
+import {getUserByToken} from "./user";
 
-const addNewIssueAction = () => {
+const addNewIssueAction = (issue) => {
     return {
         type: actionTypes.ADD_ISSUE,
-        payload: {
-            issue
-        }
+        issue
     }
 };
 
-
-export function createIssue() {
+export function createIssue(name, token) {
     return (dispatch) => {
-        new Promise((resolve) => resolve(createIssue()))
+        new Promise((resolve) => resolve(getUserByToken(token)))
+            .then((author) => createIssueViaApi(name, author))
             .then((issue) => dispatch(addNewIssueAction(issue)))
+            .catch((error) => console.log("error: " + error))
     };
 }
