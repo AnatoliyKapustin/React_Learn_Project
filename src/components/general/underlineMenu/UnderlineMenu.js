@@ -11,7 +11,7 @@ class UnderlineMenu extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.state = {
+        this.setState = {
             selected: nextProps.selected
         }
     }
@@ -42,7 +42,7 @@ class UnderlineMenu extends Component {
         } = this.state;
 
         return (
-            <div className={`${styles.menu} ${menuStyle}`}>
+            <div className={`${styles.menu} ${menuStyle ? menuStyle : ""}`}>
                 {
                     options.map(option => (
                         <Link key={option.key} to={option.to}>

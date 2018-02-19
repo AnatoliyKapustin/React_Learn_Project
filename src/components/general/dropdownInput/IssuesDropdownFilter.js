@@ -42,21 +42,24 @@ class IssuesDropdownFilter extends Component {
         let {
             items = {},
             id,
+            textBeforeFilter,
             onSelect
         } = this.props;
-        console.log("test");
-        [...items].forEach((status) => {
-            console.log("sssss: " + status)
-        });
 
         return (
             <Dropdown id={id} bsStyle="link" className={styles.wrapper}>
+                {
+                    textBeforeFilter ?
+                        <div className={`${textBeforeFilter ? styles.textBeforeFilter : ""}`}>
+                            {textBeforeFilter ? textBeforeFilter : ""}
+                        </div> : null
+                }
                 <Dropdown.Toggle bsStyle="link" className={styles.minimizeDropdown}>
                     <div>
                         СТАТУС: Любой
                     </div>
                 </Dropdown.Toggle>
-                <Dropdown.Menu className={styles.statusMenu}>
+                <Dropdown.Menu className={`${textBeforeFilter ? styles.statusMenuWithLabel : styles.statusMenu}`}>
                     {this.menuItems(items)}
                 </Dropdown.Menu>
             </Dropdown>

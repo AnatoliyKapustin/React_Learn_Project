@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {Col, Table} from "react-bootstrap";
 
-import style from "../css/style.css";
 import ProjectsView from "../../../components/projects/ProjectsView";
 import ProjectsFilters from "../../../components/projects/ProjectsFilters";
+import tableStyle from "../css/tableView.css";
+import style from "../css/style.css";
 
 class TableView extends Component {
 
@@ -21,9 +22,13 @@ class TableView extends Component {
             <Col sm={10} className={`${style.mainContainer} ${style.fullHeight}`}>
                 <Col sm={fullContent ? 12 : 7} className={` ${style.projectsContainer} ${style.fullHeight}`}>
                     <div className={` ${style.background} ${style.fullHeight}`}>
-                        <ProjectsView basePath={basePath}
+                        <div className={style.mainHeader}>
+                            {headerText ? headerText : "Проекты"}
+                        </div>
+                        <ProjectsView elementStyle={tableStyle.tableView}
+                                      basePath={basePath}
                                       selectedMenuItem={selectedKey}/>
-                        <ProjectsFilters/>
+                        <ProjectsFilters textBeforeFilter={"ПОКАЗАТЬ"}/>
                         <Table responsive>
                             <thead>
                             <tr>

@@ -10,7 +10,7 @@
 }
 
 .minimizeDropdown[aria-expanded="true"] {
-    border-radius: 25px;
+    border-radius: 25px !important;
     background: #DFE6F0;
     margin: 15px 0 0 -7px !important;
 }
@@ -21,9 +21,10 @@
 
 .minimizeDropdown {
     padding: 0 5px 0 5px;
+    /*border: none;*/
 }
 
-.minimizeDropdown > span{
+.minimizeDropdown > span {
     display: none !important;
 }
 
@@ -32,6 +33,15 @@
     border-radius: 0;
     padding: 10px 0;
     margin-left: 13px;
+    border: none;
+    box-shadow: 0 0 5px 1px #888888;
+}
+
+.statusMenuWithLabel {
+    top: 65%;
+    border-radius: 0;
+    padding: 10px 0;
+    margin-left: 100px;
     border: none;
     box-shadow: 0 0 5px 1px #888888;
 }
@@ -71,6 +81,12 @@
     margin-top: 5px;
 }
 
-.minimizeDropdown:focus, .minimizeDropdown:hover{
+.minimizeDropdown:focus, .minimizeDropdown:hover {
     color: #23527c !important;
+}
+
+.textBeforeFilter {
+    float: left;
+    vertical-align: middle;
+    margin: 15px 15px 0 20px;
 }
