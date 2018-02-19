@@ -4,27 +4,24 @@ import {Col, Table} from "react-bootstrap";
 import style from "../css/style.css";
 import ProjectsView from "../../../components/projects/ProjectsView";
 import ProjectsFilters from "../../../components/projects/ProjectsFilters";
-import {withRouter} from "react-router-dom";
 
 class TableView extends Component {
 
     render() {
 
         let {
-            location,
+            basePath,
             selectedKey,
             headerText,
             issues,
             fullContent
         } = this.props;
 
-        console.log("table view");
-
         return (
             <Col sm={10} className={`${style.mainContainer} ${style.fullHeight}`}>
                 <Col sm={fullContent ? 12 : 7} className={` ${style.projectsContainer} ${style.fullHeight}`}>
                     <div className={` ${style.background} ${style.fullHeight}`}>
-                        <ProjectsView basePath={location.pathname}
+                        <ProjectsView basePath={basePath}
                                       selectedMenuItem={selectedKey}/>
                         <ProjectsFilters/>
                         <Table responsive>
@@ -53,4 +50,4 @@ class TableView extends Component {
 
 }
 
-export default withRouter(TableView);
+export default TableView;

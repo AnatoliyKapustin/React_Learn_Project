@@ -6,7 +6,6 @@ import {forLater, forNextWeek, forThisWeek, forTodayOrEarly} from "../../../help
 import IssueItem from "../../../components/issues/IssueItem";
 import ProjectsContainer from "../ProjectsContainer";
 import ProjectsFilters from "../../../components/projects/ProjectsFilters";
-import {withRouter} from "react-router-dom";
 import ProjectsView from "../../../components/projects/ProjectsView";
 
 class ListView extends Component {
@@ -42,7 +41,7 @@ class ListView extends Component {
     render() {
 
         let {
-            location,
+            basePath,
             fullContent,
             selectedKey,
             headerText,
@@ -84,7 +83,7 @@ class ListView extends Component {
                         <div className={style.mainHeader}>
                             {headerText ? headerText : "Проекты"}
                         </div>
-                        <ProjectsView basePath={location.pathname}
+                        <ProjectsView basePath={basePath}
                                       selectedMenuItem={selectedKey}/>
                         <ProjectsFilters/>
                         <AddNewItem onSubmit={this.handleAddNewTask}/>
@@ -102,4 +101,4 @@ class ListView extends Component {
 
 }
 
-export default withRouter(ListView);
+export default ListView;

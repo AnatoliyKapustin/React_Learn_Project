@@ -40,8 +40,7 @@ class UnderlineMenu extends Component {
         let {
             selected,
         } = this.state;
-        console.log("selected: " + selected);
-        console.log("options: " + options.map(option => option.key));
+
         return (
             <div className={`${styles.menu} ${menuStyle}`}>
                 {
