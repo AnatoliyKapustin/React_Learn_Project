@@ -46,7 +46,11 @@ module.exports = function (env) {
     const plugins = [
 
         new CopyWebpackPlugin([
-            {from: publicDir, to: 'static'}
+            {
+                from: publicDir,
+                to: path.join(buildDirectory, "static"),
+                force: true
+            }
         ]),
 
         new webpack.optimize.CommonsChunkPlugin({
@@ -240,9 +244,9 @@ module.exports = function (env) {
             rules: [
                 {
                     test: /\.(html|svg|jpe?g|png|ttf|woff2?)$/,
-                    include: sourcePath,
+                    include: [sourcePath, publicDir],
                     use: {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
                             name: 'static/[name]-[hash:8].[ext]',
                         },

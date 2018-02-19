@@ -15,7 +15,7 @@ export function getUsers() {
             uuid: '845c5208-0da7-4b79-b466-c684d9a17d2d',
             name: 'Anatoliy',
             email: 'a.kapustin@infostroy.com.ua',
-            avatar: "static/img-avatar.png",
+            avatar: "/static/img-avatar.png",
             login: 'MyLogin',
             password: '12345',
         }
