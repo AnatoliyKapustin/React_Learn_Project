@@ -8,10 +8,10 @@ class ContentLayout extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/issues" component={() => (
+                <Route path="/issues" component={() => (
                     <Issues fullContent/>
                 )}/>
-                <Route exact path="/projects" component={ProjectsRoutes}/>
+                <Route path="/projects" component={ProjectsRoutes}/>
             </Switch>
         )
     }
