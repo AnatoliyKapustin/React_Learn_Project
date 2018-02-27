@@ -42,7 +42,7 @@ class ProjectsRoutes extends Component {
                     <TimeLineView basePath="/projects"
                                   issues={issues}
                                   projects={projects}
-                                  selectedKet={Menu.TIMELINE}
+                                  selectedKey={Menu.TIMELINE}
                                   fullContent/>
                 )}/>
                 <Route exact path="/projects/issues/:id" render={props => {
@@ -56,9 +56,10 @@ class ProjectsRoutes extends Component {
 
                     return (
                         <ListView headerText={project ? headerText = project.name : null}
-                                  basePath={`/projects/issues/${selectedId}`}
+                                  basePath={"/projects"}
                                   issues={filterIssuesByName(issues, filterIssueName)}
-                                  selectedProjectMenuItem={Menu.LIST}/>
+                                  selectedIssueId={selectedId}
+                                  selectedKey={Menu.LIST}/>
                     )
                 }}/>
                 <Route exact path="/projects/:id" render={props => {
@@ -71,7 +72,7 @@ class ProjectsRoutes extends Component {
                     return (
                         <ListView headerText={project.name}
                                   basePath={`/projects/${selectedId}`}
-                                  selectedProjectMenuItem={Menu.LIST}
+                                  selectedKey={Menu.LIST}
                                   issues={filterIssuesByName(issues, filterIssueName)}
                                   users={users}
                                   project={project}/>
