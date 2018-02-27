@@ -20,6 +20,22 @@ export function getUsers() {
             avatar: "/static/img-avatar.png",
             login: 'MyLogin',
             password: '12345',
+        },
+        {
+            uuid: 'f1d31094-7f3d-4d3a-8fba-f4ce32226e83',
+            name: 'John',
+            email: 'john@infostroy.com.ua',
+            avatar: "/static/img-avatar.png",
+            login: 'John',
+            password: '12345',
+        },
+        {
+            uuid: '16c5651e-3b03-4ece-a9ef-94e22a3d6c1f',
+            name: 'David',
+            email: 'david@infostroy.com.ua',
+            avatar: "/static/img-avatar.png",
+            login: 'David',
+            password: '12345',
         }
     ]
 }
@@ -27,9 +43,10 @@ export function getUsers() {
 export function createIssue(name, author) {
     return {
         id: generator.next().value,
+        name,
         creatingDate: moment(),
         author,
-        participants: [],
+        executors: [],
         subtasks: [],
         status: issueStatuses.ACTIVE.key,
     };
