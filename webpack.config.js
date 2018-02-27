@@ -289,7 +289,7 @@ module.exports = function (env) {
         stats: stats,
 
         devServer: {
-            contentBase: './build',
+            contentBase: 'build',
             publicPath: '/',
             historyApiFallback: true,
             port: port,
