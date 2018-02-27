@@ -44,3 +44,7 @@ export function issuesInProject(issues, projectId) {
 export function byId(items, id) {
     return items.filter(issue => issue.id.toString() === id.toString())[0];
 }
+
+export function byUuid(items, uuid) {
+    return items.filter(item => item.uuid.toString() === uuid.toString())[0];
+}

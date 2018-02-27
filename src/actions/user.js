@@ -1,14 +1,21 @@
 import * as actionTypes from '../constants/actionTypes';
-import {getUsers} from '../api/api'
+import {getUsers as getUsersViaApi} from '../api/api'
 
 export function getUserByToken(token) {
-    return getUsers().filter(user => user.uuid === token)[0];
+    return getUsersViaApi().filter(user => user.uuid === token)[0];
 }
 
 const getUserAction = (user) => {
     return {
         type: actionTypes.GET_USER,
         user
+    }
+};
+
+const getAllUsersAction = () => {
+    return {
+        type: actionTypes.GET_ALL_USERS,
+        users: getUsersViaApi()
     }
 };
 
@@ -23,8 +30,12 @@ export function getUser(token) {
                 reject()
             }
         }).then((user) => dispatch(getUserAction(user)))
-            .catch((error) => dispatch({
+            .catch(() => dispatch({
                 type: actionTypes.LOGOUT,
             }))
     };
+}
+
+export function getAllUsers() {
+    return dispatch => dispatch(getAllUsersAction());
 }

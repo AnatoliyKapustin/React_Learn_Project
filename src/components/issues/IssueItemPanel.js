@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Badge, Collapse} from "react-bootstrap"
 
 import style from "./css/style.css"
-import IssueItem from "./IssueItem";
+import IssueItem from "../general/issueItem/IssueItem";
 import AddNewIssue from "../general/AddNewItem";
 
 class IssueItemPanel extends Component {

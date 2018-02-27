@@ -3,7 +3,7 @@ import style from "../css/style.css";
 import {Col} from "react-bootstrap";
 import AddNewItem from "../../../components/general/AddNewItem";
 import {forLater, forNextWeek, forThisWeek, forTodayOrEarly} from "../../../helpers/dateFilter";
-import IssueItem from "../../../components/issues/IssueItem";
+import IssueItem from "../../../components/general/issueItem/IssueItem";
 import ProjectsContainer from "../ProjectsContainer";
 import ProjectsFilters from "../../../components/projects/ProjectsFilters";
 import ProjectsView from "../../../components/projects/ProjectsView";
@@ -16,8 +16,9 @@ class ListView extends Component {
         let {
             selectedIssueId,
             projects,
-            currentPath,
-            users
+            basePath,
+            users,
+            project
         } = this.props;
 
         return filterFunction(issues).map(issue => {
@@ -28,7 +29,7 @@ class ListView extends Component {
             return (<IssueItem issue={issue}
                                projectName={projectName}
                                key={issue.id}
-                               to={`${currentPath}/issues/${issue.id}`}
+                               to={`${basePath}/issues/${issue.id}`}
                                selected={selectedIssueId === issue.id.toString()}
                                users={users}
                                projectView/>);
@@ -46,7 +47,6 @@ class ListView extends Component {
     };
 
     render() {
-
         let {
             basePath,
             fullContent,
@@ -59,8 +59,6 @@ class ListView extends Component {
         let thisWeek = null;
         let nextWeek = null;
         let later = null;
-
-        console.log("issues:" + issues);
 
         if (forTodayOrEarly(issues).length > 0) {
             today = <ProjectsContainer header="Сегодня или раньше"
@@ -104,15 +102,22 @@ class ListView extends Component {
                         </div>
                     </div>
                 </Col>
+                {fullContent ? null :
+                    <Col sm={5} className={`${style.projectsContainer} ${style.fullHeight}`}>
+                        <div className={`${style.background} ${style.fullHeight}`}>
+
+                        </div>
+                    </Col>
+                }
             </Col>
         )
     }
-
 }
 
 const mapStateToProps = (state) => {
     return {
-        user: state.profile.user
+        user: state.profile.user,
+        users: state.users.list
     }
 };
 

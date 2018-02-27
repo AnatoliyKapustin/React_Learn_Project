@@ -1,6 +1,6 @@
 //***********User************************//
 export const GET_USER = "GET_USER";
-
+export const GET_ALL_USERS = "GET_ALL_USERS"
 
 //***********Login**********************//
 export const LOGIN = "LOGIN";
@@ -15,3 +15,6 @@ export const ADD_ISSUE = "ADD_ISSUE";
 //**********Projects**********************//
 export const ADD_PROJECT = "ADD_PROJECT";
 export const GET_PROJECTS = "GET_PROJECTS";
+
+//**********Filters**********************//
+export const FILTER_ISSUES_BY_NAME = "FILTER_ISSUES_BY_NAME";

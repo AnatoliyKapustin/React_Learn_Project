@@ -6,14 +6,20 @@ import ListView from "./views/ListView";
 import TableView from "./views/TableView";
 import TimeLineView from "./views/TimeLineView";
 import {byId, filterIssuesByName, issuesInProject} from "../../helpers/dateFilter";
+import {getAllUsers} from "../../actions/user";
 
 class ProjectsRoutes extends Component {
+
+    componentDidMount() {
+        this.props.dispatch(getAllUsers())
+    }
 
     render() {
 
         let {
             projects,
-            issues
+            issues,
+            filterIssueName
         } = this.props;
 
         return (
@@ -39,7 +45,22 @@ class ProjectsRoutes extends Component {
                                   selectedKet={Menu.TIMELINE}
                                   fullContent/>
                 )}/>
-                <Route exact path="/projects/issues/:id"/>
+                <Route exact path="/projects/issues/:id" render={props => {
+                    let selectedId = props.match.params.id;
+                    let issue = byId(issues, selectedId);
+                    if (!issue) {
+                        return <Redirect to="/projects"/>
+                    }
+
+                    let project = byId(projects, selectedId);
+
+                    return (
+                        <ListView headerText={project ? headerText = project.name : null}
+                                  basePath={`/projects/issues/${selectedId}`}
+                                  issues={filterIssuesByName(issues, filterIssueName)}
+                                  selectedProjectMenuItem={Menu.LIST}/>
+                    )
+                }}/>
                 <Route exact path="/projects/:id" render={props => {
                     let selectedId = props.match.params.id;
                     let project = byId(projects, selectedId);
@@ -68,7 +89,8 @@ class ProjectsRoutes extends Component {
 const mapStateToProps = (state) => {
     return {
         issues: state.issues.list,
-        projects: state.projects.list
+        projects: state.projects.list,
+        filterIssueName: state.filters.issueName
     }
 };
 
