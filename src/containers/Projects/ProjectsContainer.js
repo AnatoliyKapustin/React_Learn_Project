@@ -30,7 +30,7 @@ class ProjectsContainer extends Component {
     render() {
         let {
             header,
-            items
+            items,
         } = this.props;
 
         let {
@@ -39,13 +39,14 @@ class ProjectsContainer extends Component {
 
         return (
             <div className={`${style.projectPanelContainer}`}>
-                <div className={``}>
-                    <div className={``} onClick={this.handleHeaderClick}>
-                        <i className={`fa fa-play ${expanded ? "" : ""}`} aria-hidden="true"/>
+                <div className={style.pointerContainer}>
+                    <div className={style.header} onClick={this.handleHeaderClick}>
+                        <i className={`caret ${expanded ? style["caret-up"] : style["caret-down"]}`}
+                           aria-hidden={expanded}/>
                         {header}
                     </div>
-                    <Collapse in={expanded}>
-                        <div>
+                    <Collapse className={style.collapseContainer} in={expanded}>
+                        <div className={style.scrollDiv}>
                             {items}
                         </div>
                     </Collapse>

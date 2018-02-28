@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import {Image} from "react-bootstrap"
-import undefinedAvatar from "../../../../public/images/defaultAvatar.png"
+import {Badge, Image} from "react-bootstrap"
 
 import style from "../../issues/css/style.css"
 import {connect} from "react-redux";
@@ -10,7 +9,7 @@ import {Link} from "react-router-dom";
 
 class IssueItem extends Component {
 
-    state = {
+    static state = {
         expanded: false,
         collapsible: false
     };
@@ -27,17 +26,25 @@ class IssueItem extends Component {
             to,
             selected,
             projectView,
+            projectName
         } = this.props;
 
-        let executorAvatar = undefinedAvatar;
+        let {
+            executors,
+            author,
+            name,
+            startDate
+        } = issue;
 
-        if (issue.executors.length > 0) {
-            executorAvatar = byUuid(users, issue.executors[0]).avatar;
+        let executorAvatar = null;
+
+        if (executors.length > 0) {
+            executorAvatar = byUuid(users, executors[0]).avatar;
         }
 
         return (
             <Link to={to}>
-                <div className={`${style.header1} ${style.fullWidth}`}>
+                <div className={`${style.issueItemContainer} ${selected ? style.selectedItem : ""}`}>
                     {projectView ?
                         <Image src={issue.author.avatar}
                                className={`${style.issueDoubleImageBottom} rounded-0`}
@@ -45,10 +52,11 @@ class IssueItem extends Component {
                                responsive/>
                         : <IssueDoubleImage authorAvatar={issue.author.avatar} executorAvatar={executorAvatar}/>
                     }
-                    <span className={style.issueTitle}>
-                    {issue.name}
-                </span>
+                    <span className={style.issueTitle}>{name}</span>
+                    {projectName ? <Badge bsClass={style.projectName}>{projectName}asdasd</Badge> : null}
+                    {startDate ? <span className={style.issueStartDate}>{startDate.format("MMM DD")}</span> : null}
                 </div>
+
             </Link>
         )
     }

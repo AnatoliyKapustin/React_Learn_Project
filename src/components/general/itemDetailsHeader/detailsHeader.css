@@ -1,0 +1,11 @@
+.header-text {
+    font-size: 24px;
+    padding: 10px 0 10px 20px;
+    display: inline-block;
+}
+
+.header {
+    height: 80px;
+    border-bottom: 1px solid #E7E6EC;
+
+}

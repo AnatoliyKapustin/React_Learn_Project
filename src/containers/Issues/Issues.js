@@ -68,11 +68,12 @@ class Issues extends Component {
     };
 
     render() {
+
         let {
             issues,
             fullContent
         } = this.props;
-        issues = [];
+
         return (
             <Col sm={10} className={`${style.IssuesContainer} ${style.fullHeight}`}>
                 <Col sm={issues.length === 0 ? 8 : 5}
@@ -96,7 +97,7 @@ class Issues extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        issue: state.issues.list
+        issues: state.issues.list
     }
 };
 

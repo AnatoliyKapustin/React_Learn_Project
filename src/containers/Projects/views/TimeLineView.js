@@ -14,13 +14,12 @@ class TimeLineView extends Component {
             basePath,
             selectedKey,
             headerText,
-            issues,
-            fullContent
+            issues
         } = this.props;
 
         return (
             <Col sm={10} className={`${style.mainContainer} ${style.fullHeight}`}>
-                <Col sm={fullContent ? 12 : 7} className={` ${style.projectsContainer} ${style.fullHeight}`}>
+                <Col sm={12} className={` ${style.projectsContainer} ${style.fullHeight}`}>
                     <div className={` ${style.background} ${style.fullHeight}`}>
                         <div className={style.mainHeader}>
                             {headerText ? headerText : "Проекты"}

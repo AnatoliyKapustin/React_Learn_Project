@@ -9,6 +9,8 @@ import ProjectsFilters from "../../../components/projects/ProjectsFilters";
 import ProjectsView from "../../../components/projects/ProjectsView";
 import {connect} from "react-redux";
 import {createIssue} from "../../../actions/issue";
+import IssueDetails from "../../Issues/IssueDetails";
+import ProjectDetails from "../ProjectDetails";
 
 class ListView extends Component {
 
@@ -49,10 +51,11 @@ class ListView extends Component {
     render() {
         let {
             basePath,
-            fullContent,
             selectedKey,
             headerText,
-            issues
+            issues,
+            selectedIssue,
+            selectedProject
         } = this.props;
 
         let today = null;
@@ -85,29 +88,34 @@ class ListView extends Component {
         }
         return (
             <Col sm={10} className={`${style.mainContainer} ${style.fullHeight}`}>
-                <Col sm={fullContent ? 12 : 7} className={` ${style.projectsContainer} ${style.fullHeight}`}>
-                    <div className={` ${style.background} ${style.fullHeight}`}>
-                        <div className={style.mainHeader}>
-                            {headerText ? headerText : "Проекты"}
-                        </div>
-                        <ProjectsView basePath={basePath}
-                                      selectedMenuItem={selectedKey}/>
-                        <ProjectsFilters/>
-                        <AddNewItem onSubmit={this.handleAddNewTask}/>
-                        <div>
-                            {today}
-                            {thisWeek}
-                            {nextWeek}
-                            {later}
-                        </div>
+                <Col sm={selectedIssue || selectedProject ? 7 : 12}
+                     className={` ${style.background} ${style.projectsContainer} ${style.fullHeight}`}>
+                    <div className={style.mainHeader}>
+                        {headerText ? headerText : "Проекты"}
                     </div>
+                    <ProjectsView basePath={basePath}
+                                  selectedMenuItem={selectedKey}/>
+                    <ProjectsFilters/>
+                    <AddNewItem onSubmit={this.handleAddNewTask}/>
+                    {today}
+                    {thisWeek}
+                    {nextWeek}
+                    {later}
                 </Col>
-                {fullContent ? null :
-                    <Col sm={5} className={`${style.projectsContainer} ${style.fullHeight}`}>
+                {selectedIssue || selectedProject ?
+                    <Col sm={5}
+                         className={`${style.issueDetailsContainer} ${style.projectsContainer} ${style.fullHeight}`}>
                         <div className={`${style.background} ${style.fullHeight}`}>
-
+                            {
+                                selectedIssue
+                                    ? <IssueDetails issue={selectedIssue}/>
+                                    : selectedProject
+                                    ? <ProjectDetails project={selectedProject}/>
+                                    : null
+                            }
                         </div>
                     </Col>
+                    : null
                 }
             </Col>
         )
