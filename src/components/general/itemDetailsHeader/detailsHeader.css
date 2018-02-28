@@ -7,5 +7,26 @@
 .header {
     height: 80px;
     border-bottom: 1px solid #E7E6EC;
+}
 
+.header-buttons {
+    float: right;
+    margin: 15px 10px 10px 0;
+}
+
+.dropdown-button > button {
+    padding: 0 !important;
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    color: #ACACAC;
+}
+
+.header-option {
+    padding: 0 !important;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    color: #ACACAC;
 }

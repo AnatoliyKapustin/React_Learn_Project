@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import style from "./detailsHeader.css";
-import {Button, Dropdown, Glyphicon} from "react-bootstrap";
+import {Button, Dropdown} from "react-bootstrap";
 
 class ItemDetailsHeader extends Component {
 
@@ -15,13 +15,13 @@ class ItemDetailsHeader extends Component {
         return (
             <div className={`${style.header} ${componentStyles ? componentStyles.orangeStripe : ""}`}>
                 <div className={style["header-text"]}>{headerText}</div>
-                <div className={style.HeaderButtons}>
-                    <Button className={style.HeaderOption}>
+                <div className={style["header-buttons"]}>
+                    <Button className={style["header-option"]}>
                         <i className={`fa fa-link ${style.LinkAwesomeIcon}`} aria-hidden="true"/>
                     </Button>
-                    <Dropdown id="settings">
+                    <Dropdown id="settings" className={style["dropdown-button"]}>
                         <Dropdown.Toggle className={style.HeaderOption} noCaret>
-                            <Glyphicon glyph={"glyphicon glyphicon-option-horizontal"}/>
+                            <i className="fa fa-ellipsis-h" aria-hidden="true"/>
                         </Dropdown.Toggle>
                         <Dropdown.Menu className={style.SettingsMenu}>
                             {
