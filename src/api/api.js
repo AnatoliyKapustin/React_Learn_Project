@@ -14,6 +14,7 @@ export function apiLogin(login, password) {
 export function getUsers() {
     return [
         {
+            id: 1,
             uuid: '845c5208-0da7-4b79-b466-c684d9a17d2d',
             name: 'Anatoliy',
             email: 'a.kapustin@infostroy.com.ua',
@@ -22,6 +23,7 @@ export function getUsers() {
             password: '12345',
         },
         {
+            id: 2,
             uuid: 'f1d31094-7f3d-4d3a-8fba-f4ce32226e83',
             name: 'John',
             email: 'john@infostroy.com.ua',
@@ -30,6 +32,7 @@ export function getUsers() {
             password: '12345',
         },
         {
+            id: 3,
             uuid: '16c5651e-3b03-4ece-a9ef-94e22a3d6c1f',
             name: 'David',
             email: 'david@infostroy.com.ua',
