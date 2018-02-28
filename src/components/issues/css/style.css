@@ -2,6 +2,11 @@
     margin-bottom: 1px;
 }
 
+.issueItemContainer {
+    padding: 10px 0 10px 40px;
+    border-bottom: 1px solid #E7E6EC;
+}
+
 .container {
     margin: 0 !important;
 }
@@ -63,7 +68,7 @@
 }
 
 .doubleImagesContainer {
-    display: block;
+    display: inline-block;
 }
 
 .issueDoubleImageBottom {
@@ -78,7 +83,7 @@
     position: relative;
     display: inline;
     z-index: 2;
-    top: 14px;
+    top: 10px;
     left: -20px;
     border-left: 2px solid #ffffff;
     border-top: 2px solid #ffffff;
@@ -86,6 +91,31 @@
     height: 40px;
 }
 
-.issueTitle {
+.undefinedAvatar {
+    background: #F3F3F5;
+    border: 1px solid #F3F3F5;
+}
 
+.issueTitle {
+    color: #394345;
+    margin-left: 20px;
+}
+
+.projectName {
+    padding: 0 5px 0 5px;
+    color: #7C7281;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.issueStartDate {
+    line-height: 40px;
+    padding-right: 20px;
+    color: #7C7281;
+    float: right;
+}
+
+.selectedItem {
+    background: #A9C6EE;
 }
