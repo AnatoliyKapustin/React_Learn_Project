@@ -1,4 +1,5 @@
 .issuePanelContainer {
+    display: contents;
     margin-bottom: 1px;
 }
 
@@ -9,27 +10,6 @@
 
 .container {
     margin: 0 !important;
-}
-
-.header {
-    background: #F5F5F5;
-}
-
-.header1 {
-    background: #F5F5F5;
-    position: relative;
-    display: inline-block;
-}
-
-.headerText {
-    display: inline-block;
-    padding: 10px 0 10px 20px;
-    font-family: "Verdana", serif;
-}
-
-.badge {
-    margin: 10px 10px 10px 0;
-    border-radius: 3px;
 }
 
 .avatar {
@@ -118,4 +98,19 @@
 
 .selectedItem {
     background: #A9C6EE;
+}
+
+.collapseContainer {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.scrollDiv {
+    font-size: 12px;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
 }

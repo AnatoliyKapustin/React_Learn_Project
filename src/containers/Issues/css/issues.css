@@ -1,23 +1,41 @@
 .IssuesContainer {
     height: 100%;
     float: left;
-    padding: 0;
+    padding-left: 15px;
     margin: 0;
 }
 
-.issuesTasksContainer {
-    padding-left: 15px;
+.background {
+    background: #FFFFFF;
 }
 
 .issues {
+    display: flex;
+    flex-direction: column;
     background: #FFFFFF;
+    padding: 0;
 }
 
-.issuesSubtasks {
-    background: #FFFFFF;
+.issueDetails {
+    padding-left: 15px;
+}
+
+.dateItems {
+    display: flex;
+    flex-direction: column;
 }
 
 .fullHeight {
     height: 100%;
     padding-right: 0;
+}
+
+.issueDoneHeader {
+    margin-top: auto;
+}
+
+.issueDoneIcon {
+    padding-left: 20px;
+    color: #57B35C;
+    font-size: 1.3em;
 }
