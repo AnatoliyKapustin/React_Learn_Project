@@ -7,7 +7,6 @@ let generator = idGenerator();
 
 export function apiLogin(login, password) {
     let user = getUsers().filter(user => (user.email === login || user.login === login) && user.password === password)[0];
-    console.log("login uuid " + user.uuid);
     return user.uuid;
 }
 
