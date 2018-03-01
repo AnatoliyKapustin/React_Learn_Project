@@ -15,6 +15,13 @@ const getUserProjectsAction = (projects) => {
     }
 };
 
+export const deleteProjectAction = (id) => {
+    return {
+        type: actionTypes.DELETE_PROJECT,
+        id
+    }
+};
+
 export function createProject(name, token) {
     return dispatch => {
         new Promise((resolve) => resolve(createProjectApi(name, token)))

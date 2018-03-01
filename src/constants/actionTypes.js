@@ -14,7 +14,8 @@ export const ADD_ISSUE = "ADD_ISSUE";
 
 //**********Projects**********************//
 export const ADD_PROJECT = "ADD_PROJECT";
-export const GET_PROJECTS = "GET_PROJECTS";
+export const DELETE_PROJECT = "DELETE_PROJECT";
+export const GET_ALL_PROJECTS = "GET_ALL_PROJECTS";
 
 //**********Filters**********************//
 export const FILTER_ISSUES_BY_NAME = "FILTER_ISSUES_BY_NAME";

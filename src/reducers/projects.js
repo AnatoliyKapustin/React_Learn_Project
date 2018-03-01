@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/actionTypes';
 
-const projects = (state = {list: [], projects: []}, action) => {
+const projects = (state = {list: []}, action) => {
     switch (action.type) {
         case actionTypes.ADD_PROJECT:
             return {
@@ -10,11 +10,17 @@ const projects = (state = {list: [], projects: []}, action) => {
                     action.project,
                 ]
             };
-        case actionTypes.GET_PROJECTS:
-            let projects = action.projects;
+        case actionTypes.DELETE_PROJECT:
             return {
                 ...state,
-                projects
+                list: state.list.filter(project => project.id !== action.id),
+            };
+        case actionTypes.GET_ALL_PROJECTS:
+            return {
+                ...state,
+                list: [
+                    ...state.list
+                ]
             };
         default:
             return state;

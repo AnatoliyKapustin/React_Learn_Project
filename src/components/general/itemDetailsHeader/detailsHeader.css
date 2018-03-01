@@ -30,3 +30,20 @@
     background: #FFFFFF;
     color: #ACACAC;
 }
+
+.options-menu {
+    left: auto;
+    right: 0;
+    top: 90%;
+    border-radius: 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.options-menu:empty {
+    right: 0;
+    left: inherit;
+}
+
+.options-menu ul:focus, a:focus{
+    outline: none;
+}
