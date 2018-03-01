@@ -1,13 +1,17 @@
 import React, {Component} from "react";
-import {Badge, Collapse} from "react-bootstrap"
+import {Collapse} from "react-bootstrap"
+import IssueItem from "../general/issueItem/IssueItem";
+import IssueDateHeader from "../general/issueDateHeader/IssueDateHeader";
 
 import style from "./css/style.css"
-import IssueItem from "../general/issueItem/IssueItem";
-import AddNewIssue from "../general/AddNewItem";
+import AddNewItem from "../general/AddNewItem";
+import {connect} from "react-redux";
+import {createIssue} from "../../actions/issue";
 
 class IssueItemPanel extends Component {
 
     state = {
+        expanded: false,
         collapsible: false
     };
 
@@ -25,12 +29,30 @@ class IssueItemPanel extends Component {
         }
     }
 
+    handleAddNewIssue = (event, input) => {
+        event.preventDefault();
+        let {
+            user
+        } = this.props;
+
+        this.props.createIssue(input.value, user.uuid);
+        input.value = "";
+    };
+
     handleHeaderSelect = () => {
         this.setState({expanded: !this.state.expanded});
     };
 
     issuesToIssueItem = (issues) => {
-        return <IssueItem issue={issues}/>
+        let {selectedIssueId} = this.props;
+        console.log("issuse to item: ");
+        issues.forEach(issue => console.log(issue))
+        return issues.map(issue => {
+            return (<IssueItem issue={issue}
+                               key={issue.id}
+                               to={`/issues/${issue.id}`}
+                               selected={selectedIssueId === issue.id.toString()}/>)
+        })
     };
 
     render() {
@@ -41,24 +63,24 @@ class IssueItemPanel extends Component {
             text,
             to,
             filteredIssues,
-            showAddIssue,
             collapsible,
-            expanded
+            showAddIssue
         } = this.props;
 
         let date = startDate && endDate ? startDate + " - " + endDate : startDate;
 
         return (
             <div className={`${style.issuePanelContainer}`}>
-                <div className={style.header} onClick={collapsible ? this.handleHeaderSelect : undefined}>
-                    <span className={style.headerText}>{header}</span>
-                    <span className={style.headerText}>{date}</span>
-                    <Badge pullRight className={`${style.badge} text-center`}>{this.props.count}</Badge>
-                </div>
-                <Collapse in={this.state.expanded}>
+                <IssueDateHeader onClickHeader={collapsible ? this.handleHeaderSelect : null}
+                                 header={header}
+                                 date={date}
+                                 count={filteredIssues.length}/>
+                <Collapse in={this.state.expanded} className={style.collapseContainer}>
                     <div>
-                        {showAddIssue ? <AddNewIssue/> : ""}
-                        {this.issuesToIssueItem(filteredIssues)}
+                        {showAddIssue ? <AddNewItem onSubmit={this.handleAddNewIssue}/> : ""}
+                        <div className={style.scrollDiv}>
+                            {this.issuesToIssueItem(filteredIssues)}
+                        </div>
                     </div>
                 </Collapse>
             </div>
@@ -67,4 +89,16 @@ class IssueItemPanel extends Component {
 
 }
 
-export default IssueItemPanel;
+const mapStateToProps = (state) => {
+    return {
+        user: state.profile.user
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createIssue: (name, uuid) => dispatch(createIssue(name, uuid))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(IssueItemPanel);

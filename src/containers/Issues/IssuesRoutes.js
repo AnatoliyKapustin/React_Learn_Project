@@ -1,8 +1,8 @@
 import React, {Component} from "react"
-import {Route, Switch} from "react-router-dom";
-import {Menu} from "../../constants/Constants";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Issues from "./Issues";
 import {connect} from "react-redux";
+import {byId} from "../../helpers/dateFilter";
 
 
 class IssuesRoutes extends Component {
@@ -16,9 +16,18 @@ class IssuesRoutes extends Component {
         return (
             <Switch>
                 <Route path="/issues" component={() => (
-                    <Issues basePath="/issues"
-                            issues={issues}/>
+                    <Issues issues={issues}/>
                 )}/>
+                <Route exact path="/issues/:id" render={(props) => {
+                    let selectedId = props.match.params.id;
+                    let issue = byId(issues, selectedId);
+                    if (!issue) {
+                        return <Redirect to="/issues"/>
+                    }
+                    return <Issues issues={issues}
+                                   selectedIssue={issue}
+                                   halfView/>
+                }}/>
             </Switch>
         )
     }

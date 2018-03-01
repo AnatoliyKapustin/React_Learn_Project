@@ -1,0 +1,14 @@
+.header {
+    background: #F5F5F5;
+}
+
+.headerText {
+    display: inline-block;
+    padding: 10px 0 10px 20px;
+    font-family: "Verdana", serif;
+}
+
+.badge {
+    margin: 10px 10px 10px 0;
+    border-radius: 3px;
+}

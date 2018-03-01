@@ -9,11 +9,6 @@ import {Link} from "react-router-dom";
 
 class IssueItem extends Component {
 
-    static state = {
-        expanded: false,
-        collapsible: false
-    };
-
     static defaultProps = {
         projectView: false
     };
@@ -42,21 +37,22 @@ class IssueItem extends Component {
             executorAvatar = byUuid(users, executors[0]).avatar;
         }
 
+        console.log("asdasd")
+
         return (
             <Link to={to}>
                 <div className={`${style.issueItemContainer} ${selected ? style.selectedItem : ""}`}>
                     {projectView ?
-                        <Image src={issue.author.avatar}
+                        <Image src={author.avatar}
                                className={`${style.issueDoubleImageBottom} rounded-0`}
                                alt="avatar"
                                responsive/>
-                        : <IssueDoubleImage authorAvatar={issue.author.avatar} executorAvatar={executorAvatar}/>
+                        : <IssueDoubleImage authorAvatar={author.avatar} executorAvatar={executorAvatar}/>
                     }
                     <span className={style.issueTitle}>{name}</span>
-                    {projectName ? <Badge bsClass={style.projectName}>{projectName}asdasd</Badge> : null}
+                    {projectName ? <Badge bsClass={style.projectName}>{projectName}</Badge> : null}
                     {startDate ? <span className={style.issueStartDate}>{startDate.format("MMM DD")}</span> : null}
                 </div>
-
             </Link>
         )
     }
