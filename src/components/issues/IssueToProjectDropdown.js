@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Dropdown, Form, Glyphicon} from "react-bootstrap";
 
+import style from "./css/style.css";
+
 class IssueToProjectDropdown extends Component {
 
     state = {
@@ -38,14 +40,6 @@ class IssueToProjectDropdown extends Component {
         });
     };
 
-    handleToggle = (isOpen, event) => {
-        if (event.type !== "react-select" && isOpen !== this.state.open) {
-            this.setState({
-                open: isOpen
-            });
-        }
-    };
-
     render() {
         let {
             issue,
@@ -57,8 +51,10 @@ class IssueToProjectDropdown extends Component {
         } = issue;
 
         return (
-            <Dropdown id="add-issue-to-project" bsStyle="link" open={this.state.open} onToggle={this.handleToggle}>
-                <Dropdown.Toggle bsStyle="link" noCaret onClick={this.handleClick}>
+            <Dropdown id="add-issue-to-project" bsStyle="link" className={style["issue-to-project"]}
+                      open={this.state.open}>
+                <Dropdown.Toggle bsStyle="link" className={style["issue-to-project-button"]} noCaret
+                                 onClick={this.handleClick}>
                     {
                         projectId !== undefined ?
                             <span>{projects.filter((project) => project.id === projectId)[0].name}</span> :
@@ -68,20 +64,23 @@ class IssueToProjectDropdown extends Component {
                             ]
                     }
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
+                <Dropdown.Menu className={style["add-to-project-menu"]}>
                     <div>
                         <Form onSubmit={this.handleSubmit}>
-                            <input type="text" className="form-control" placeholder="Добавить в папку/проект"
+                            <input type="text"
+                                   className="form-control"
+                                   placeholder="Добавить в папку/проект"
                                    ref={input => this.input = input}/>
                         </Form>
                         {
                             projects.length === 0 ?
-                                <div>
+                                <div className={style.folders}>
                                     Отсутсвуют папки для отображения
                                 </div>
                                 : projects.map(project => (
-                                    <div key={project.id} onClick={this.createHandleSelect(project.id)}>
-                                        <i className="fa fa-file-text-o" aria-hidden="true"/>
+                                    <div key={project.id} onClick={this.createHandleSelect(project.id)}
+                                         className={style["project-item"]}>
+                                        <Glyphicon glyph="glyphicon glyphicon-list-alt" aria-hidden="true"/>
                                         {project.name}
                                     </div>
                                 )

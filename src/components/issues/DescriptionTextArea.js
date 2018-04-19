@@ -65,13 +65,11 @@ class DescriptionTextArea extends Component {
             }}>
                 <form>
                     <FormGroup>
-                        <FormControl inputRef={ref => {
-                            this.textarea = ref
-                        }}
+                        <FormControl inputRef={ref => {this.textarea = ref}}
                                      onFocus={this.onFocus}
                                      onBlur={this.onBlur}
                                      componentClass="textarea"
-                                     className={`${style.noResize} ${style["header-textarea"]}`}
+                                     className={`${style["description-textarea"]}`}
                                      placeholder={placeholder}
                                      rows={10}
                                      defaultValue={description}

@@ -116,11 +116,71 @@
 }
 
 /*TextArea*/
-.noResize {
-    resize: none;
-}
-
-.header-textarea {
+.description-textarea {
+    margin-left: 0 !important;
+    padding: 15px 35px;
+    font-size: 16px;
+    resize: vertical !important;
     border-radius: 0;
     border-bottom: 1px solid #E7E6EC;
+    min-height: 150px;
+}
+
+/*Issue to project dropdown*/
+.issue-to-project {
+    display: block;
+    margin: 0 0 0 20px;
+}
+
+.add-to-project-menu {
+    border-radius: 0;
+    border: none;
+    top: -35px;
+    left: -15px;
+    width: 65%;
+    min-height: 100px;
+    background: #FFFFFF;
+    box-shadow: 0 0 5px 1px #888888;
+}
+
+.add-to-project-menu > div:first-child {
+    padding: 0 15px;
+}
+
+.add-to-project-menu > div:first-child > form {
+    margin-bottom: 10px;
+}
+
+.add-to-project-menu input {
+    border-radius: 0;
+}
+
+.issue-to-project-button {
+    padding: 0;
+}
+
+.folders {
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.project-item {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.project-item > span {
+    padding-right: 10px;
+}
+
+.project-item:hover {
+    background-color: #e1e3e9;
+}
+
+.project-item:active {
+    background-color: #ccc;
+}
+
+.project-item > i {
+    margin-right: 5px;
 }

@@ -2,7 +2,6 @@ import React, {Component} from "react";
 
 import style from "./detailsHeader.css";
 import {Button, Dropdown, MenuItem} from "react-bootstrap";
-import IssueToProjectDropdown from "../../issues/IssueToProjectDropdown";
 
 class ItemDetailsHeader extends Component {
 
@@ -29,7 +28,7 @@ class ItemDetailsHeader extends Component {
                 <div className={style["header-text"]}>{headerText}</div>
                 <div className={style["header-buttons"]}>
                     <Button className={style["header-option"]}>
-                        <i className={`fa fa-link ${style.LinkAwesomeIcon}`} aria-hidden="true"/>
+                        <i className="fa fa-link aria-hidden=true"/>
                     </Button>
                     <Dropdown id="settings" className={style["dropdown-button"]}>
                         <Dropdown.Toggle noCaret>

@@ -1,17 +1,17 @@
 import * as actionTypes from "../constants/actionTypes";
 import {createProjectApi} from "../api/api";
 
-const addNewProjectAction = (project) => {
-    return {
-        type: actionTypes.ADD_PROJECT,
-        project
-    }
-};
-
 const getUserProjectsAction = (projects) => {
     return {
         type: actionTypes.GET_PROJECTS,
         projects
+    }
+};
+
+export const addNewProjectAction = (project) => {
+    return {
+        type: actionTypes.ADD_PROJECT,
+        project
     }
 };
 

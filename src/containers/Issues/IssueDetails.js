@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import ItemDetailsHeader from "../../components/general/itemDetailsHeader/ItemDetailsHeader";
 import {connect} from "react-redux";
-import {deleteIssueAction, updateIssue} from "../../actions/issue";
+import {addIssueToNewProject, deleteIssueAction, updateIssue} from "../../actions/issue";
 import {DELETE_ISSUE} from "../../constants/actionTypes";
 import IssueToProjectDropdown from "../../components/issues/IssueToProjectDropdown";
 import DescriptionTextArea from "../../components/issues/DescriptionTextArea";
@@ -13,21 +13,37 @@ class IssueDetails extends Component {
         subTasksIsOpen: false
     };
 
+    handleAddToNewProject = (projectId) => {
+        let {
+            issue,
+            token,
+        } = this.props;
+        this.props.addIssueToNewProject(issue, projectId, token);
+    };
+
+    handleUpdateProject = (projectId) => {
+        let {issue} = this.props;
+        this.props.updateIssue({
+            ...issue,
+            projectId
+        });
+    };
+
     handleUpdateDescription = (description) => {
         let {issue} = this.props;
-        this.props.updateDescription({...issue, description});
+        this.props.updateIssue({...issue, description});
     };
 
     onSelectMenuItem = (eventKey) => {
 
         let {
             issue,
-            dispatch
+            deleteIssue
         } = this.props;
 
         switch (eventKey) {
             case DELETE_ISSUE:
-                dispatch(deleteIssueAction(issue.id))
+                deleteIssue(issue.id)
         }
     };
 
@@ -56,7 +72,9 @@ class IssueDetails extends Component {
                                    onSelect={this.onSelectMenuItem}
                                    bottomComponent={() =>
                                        <IssueToProjectDropdown projects={projects}
-                                                               issue={issue}/>
+                                                               issue={issue}
+                                                               onAddToNewProject={this.handleAddToNewProject}
+                                                               onSelectProject={this.handleUpdateProject}/>
                                    }/>
                 {
                     subTasksIsOpen ?
@@ -75,13 +93,16 @@ class IssueDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        projects: state.projects.list
+        projects: state.projects.list,
+        token: state.profile.token
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateDescription: (description) => dispatch(updateIssue(description)),
+        updateIssue: (issue) => dispatch(updateIssue(issue)),
+        addIssueToNewProject: (issue, projectId, token) => dispatch(addIssueToNewProject(issue, projectId, token)),
+        deleteIssue: (id) => dispatch(deleteIssueAction(id))
     }
 };
 

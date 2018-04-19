@@ -1,6 +1,7 @@
 import * as actionTypes from "../constants/actionTypes";
-import {createIssue as createIssueViaApi} from "../api/api";
+import {createIssue as createIssueViaApi, createProjectApi} from "../api/api";
 import {getUserByToken} from "./user";
+import {addNewProjectAction} from "./project";
 
 const addNewIssueAction = (issue) => {
     return {
@@ -29,5 +30,22 @@ export const updateIssue = (issue) => {
     return {
         type: actionTypes.UPDATE_ISSUE,
         issue,
+    }
+};
+
+export const addIssueToNewProject = (issue, projectName, token) => {
+    return dispatch => {
+        new Promise((resolve) => resolve(createProjectApi(projectName, token)))
+            .then(project => {
+                dispatch(addNewProjectAction(project));
+                return project;
+            })
+            .then(project => {
+                let updatedIssue = {
+                    ...issue,
+                    projectId: project.id,
+                };
+                dispatch(updateIssue(updatedIssue));
+            });
     }
 };
