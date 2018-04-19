@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import style from "./detailsHeader.css";
 import {Button, Dropdown, MenuItem} from "react-bootstrap";
+import IssueToProjectDropdown from "../../issues/IssueToProjectDropdown";
 
 class ItemDetailsHeader extends Component {
 
@@ -19,7 +20,8 @@ class ItemDetailsHeader extends Component {
             componentStyles,
             headerText,
             options,
-            onSelect
+            onSelect,
+            bottomComponent: IssueToProjectDropdown,
         } = this.props;
 
         return (
@@ -40,6 +42,9 @@ class ItemDetailsHeader extends Component {
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
+                {
+                    IssueToProjectDropdown ? <IssueToProjectDropdown/> : null
+                }
             </div>
         )
     }

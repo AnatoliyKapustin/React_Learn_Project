@@ -17,3 +17,17 @@ export function createIssue(name, token) {
             .catch((error) => console.log("error: " + error))
     };
 }
+
+export const deleteIssueAction = (id) => {
+    return {
+        type: actionTypes.DELETE_ISSUE,
+        id
+    }
+};
+
+export const updateIssue = (issue) => {
+    return {
+        type: actionTypes.UPDATE_ISSUE,
+        issue,
+    }
+};

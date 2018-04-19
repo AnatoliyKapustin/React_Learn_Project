@@ -114,3 +114,13 @@
     display: flex !important;
     flex-direction: column !important;
 }
+
+/*TextArea*/
+.noResize {
+    resize: none;
+}
+
+.header-textarea {
+    border-radius: 0;
+    border-bottom: 1px solid #E7E6EC;
+}
