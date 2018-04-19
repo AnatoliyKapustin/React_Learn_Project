@@ -7,7 +7,7 @@ export function forTodayOrEarly(issues) {
 
 export function forThisWeek(issues) {
     let now = moment().startOf("day");
-    let nextWeekStart = moment().startOf("day").add(7, "day");
+    let nextWeekStart = moment().startOf("week").add(7, "day");
     return issues.filter(issue => !!issue.startDate && issue.startDate.isAfter(now, "day") && issue.startDate.isBefore(nextWeekStart, "day"));
 }
 

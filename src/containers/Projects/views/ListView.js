@@ -131,7 +131,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createIssue: (name, token) => dispatch(createIssue(name, token)),
+        createIssue: (name, uuid) => dispatch(createIssue(name, uuid)),
     }
 };
 

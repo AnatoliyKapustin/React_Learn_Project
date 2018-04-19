@@ -62,7 +62,7 @@ class Menu extends Component {
                     )}/>
                 </li>
                 <li className={style.menuItem}>
-                    <Route path="/projects" children={({match}) => (
+                    <Route path="/projects(/issues/\d+)?(/table)?(/timeline)?" children={({match}) => (
                         <Link to="/projects">
                             <div className={match && style.active}>
                                 <span>ПРОЕКТЫ</span>

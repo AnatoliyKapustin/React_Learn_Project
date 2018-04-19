@@ -15,7 +15,7 @@ class IssuesRoutes extends Component {
 
         return (
             <Switch>
-                <Route path="/issues" component={() => (
+                <Route exact path="/(issues)?" component={() => (
                     <Issues issues={issues}/>
                 )}/>
                 <Route exact path="/issues/:id" render={(props) => {
