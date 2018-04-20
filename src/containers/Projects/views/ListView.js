@@ -2,13 +2,13 @@ import React, {Component} from "react";
 import style from "../css/style.css";
 import {Col} from "react-bootstrap";
 import AddNewItem from "../../../components/general/AddNewItem";
-import {forLater, forNextWeek, forThisWeek, forTodayOrEarly} from "../../../helpers/dateFilter";
+import {forLater, forNextWeek, forThisWeek, forTodayOrEarly, issuesWithStatus} from "../../../helpers/dateFilter";
 import IssueItem from "../../../components/general/issueItem/IssueItem";
 import ProjectsContainer from "../ProjectsContainer";
 import ProjectsFilters from "../../../components/projects/ProjectsFilters";
 import ProjectsView from "../../../components/projects/ProjectsView";
 import {connect} from "react-redux";
-import {createIssue} from "../../../actions/issue";
+import {createIssue, createNewIssueAndAddToProject} from "../../../actions/issue";
 import IssueDetails from "../../Issues/IssueDetails";
 import ProjectDetails from "../ProjectDetails";
 
@@ -20,11 +20,11 @@ class ListView extends Component {
             projects,
             basePath,
             users,
-            project
+            selectedProject
         } = this.props;
 
         return filterFunction(issues).map(issue => {
-            let projectName = project ? project.name : undefined;
+            let projectName = selectedProject ? selectedProject.name : undefined;
             if (!projectName && issue.projectId !== undefined) {
                 projectName = projects.filter(project => project.id === issue.projectId)[0].name;
             }
@@ -41,10 +41,14 @@ class ListView extends Component {
     handleAddNewTask = (event, input) => {
         event.preventDefault();
         let {
-            user
+            user,
+            selectedProject
         } = this.props;
-
-        this.props.createIssue(input.value, user.uuid);
+        if (selectedProject) {
+            this.props.createNewIssueAndAddToProject(selectedProject, input.value, user.uuid);
+        } else {
+            this.props.createIssue(input.value, user.uuid);
+        }
         input.value = "";
     };
 
@@ -54,9 +58,17 @@ class ListView extends Component {
             selectedKey,
             headerText,
             issues,
+            statusFilter,
             selectedIssue,
             selectedProject
         } = this.props;
+
+        if (statusFilter) {
+            issues = issuesWithStatus(issues, statusFilter);
+        }
+        // if(executorFilter) {
+        //     issues = issuesWithExecutor(issues, executorFilter);
+        // }
 
         let today = null;
         let thisWeek = null;
@@ -95,7 +107,7 @@ class ListView extends Component {
                     </div>
                     <ProjectsView basePath={basePath}
                                   selectedMenuItem={selectedKey}/>
-                    <ProjectsFilters/>
+                    <ProjectsFilters selectedStatusFilter={statusFilter}/>
                     <AddNewItem onSubmit={this.handleAddNewTask}/>
                     {today}
                     {thisWeek}
@@ -124,14 +136,17 @@ class ListView extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        statusFilter: state.filters.issueStatusFilterProjectView,
         user: state.profile.user,
-        users: state.users.list
+        users: state.users.list,
+        projects: state.projects.list,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         createIssue: (name, uuid) => dispatch(createIssue(name, uuid)),
+        createNewIssueAndAddToProject: (project, name, uuid) => dispatch(createNewIssueAndAddToProject(project, name, uuid)),
     }
 };
 

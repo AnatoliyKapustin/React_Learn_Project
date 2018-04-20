@@ -24,7 +24,7 @@ class TimeLineView extends Component {
                         <div className={style.mainHeader}>
                             {headerText ? headerText : "Проекты"}
                         </div>
-                        <ProjectsView elementStyle={tableStyle.tableView}
+                        <ProjectsView elementStyle={tableStyle["table-view"]}
                                       basePath={basePath}
                                       selectedMenuItem={selectedKey}/>
                         <ProjectsFilters textBeforeFilter={"ПОКАЗАТЬ"}/>

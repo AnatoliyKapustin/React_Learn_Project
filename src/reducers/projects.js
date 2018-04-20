@@ -15,6 +15,12 @@ const projects = (state = {list: []}, action) => {
                 ...state,
                 list: state.list.filter(project => project.id !== action.id),
             };
+        case actionTypes.UPDATE_PROJECT:
+            let updatedList = state.list.map(project => project.id === action.project.id ? action.project : project);
+            return {
+                ...state,
+                list: updatedList
+            };
         case actionTypes.GET_ALL_PROJECTS:
             return {
                 ...state,

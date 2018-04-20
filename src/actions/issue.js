@@ -49,3 +49,22 @@ export const addIssueToNewProject = (issue, projectName, token) => {
             });
     }
 };
+
+export const createNewIssueAndAddToProject = (project, issueName, token) => {
+    return (dispatch) => {
+        new Promise((resolve) => resolve(getUserByToken(token)))
+            .then((author) => createIssueViaApi(issueName, author))
+            .then((issue) => {
+                dispatch(addNewIssueAction(issue));
+                return issue;
+            })
+            .then((issue) => {
+                let updatedIssue = {
+                    ...issue,
+                    projectId: project.id,
+                };
+                dispatch(updateIssue(updatedIssue))
+            })
+            .catch((error) => console.log("error: " + error))
+    };
+};

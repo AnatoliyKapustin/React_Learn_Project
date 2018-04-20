@@ -15,7 +15,14 @@ export const addNewProjectAction = (project) => {
     }
 };
 
-export const deleteProjectAction = (id) => {
+export const updateProject = (project) => {
+    return {
+        type: actionTypes.UPDATE_PROJECT,
+        project,
+    }
+};
+
+export const deleteProject = (id) => {
     return {
         type: actionTypes.DELETE_PROJECT,
         id
