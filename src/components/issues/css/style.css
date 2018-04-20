@@ -115,18 +115,6 @@
     flex-direction: column !important;
 }
 
-/*TextArea*/
-.description-textarea {
-    margin-left: 0 !important;
-    padding: 15px 35px;
-    font-size: 16px;
-    resize: vertical !important;
-    border-radius: 0;
-    border-bottom: 1px solid #E7E6EC;
-    min-height: 150px;
-    max-height: 500px;
-}
-
 /*Issue to project dropdown*/
 .issue-to-project {
     display: block;

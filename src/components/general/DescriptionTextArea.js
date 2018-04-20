@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {FormControl, FormGroup} from "react-bootstrap";
 
-import style from "./css/style.css";
+import style from "../style.css";
 
 class DescriptionTextArea extends Component {
 

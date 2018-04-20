@@ -3,27 +3,41 @@ import React, {Component} from "react";
 import style from "./css/projectDetails.css";
 import ItemDetailsHeader from "../../components/general/itemDetailsHeader/ItemDetailsHeader";
 import {connect} from "react-redux";
-import {deleteProjectAction} from "../../actions/project";
+import {deleteProject, updateProject} from "../../actions/project";
 import {DELETE_PROJECT} from "../../constants/actionTypes";
+import {addIssueToNewProject, deleteIssueAction, updateIssue} from "../../actions/issue";
+import DescriptionTextArea from "../../components/general/DescriptionTextArea";
 
 class ProjectDetails extends Component {
 
     onSelectMenuItem = (eventKey) => {
         let {
-            project,
-            dispatch
+            project
         } = this.props;
         switch (eventKey) {
             case DELETE_PROJECT:
-                dispatch(deleteProjectAction(project.id))
+                this.props.deleteProject(project.id)
         }
     };
 
-    render() {
+    handleUpdateProject = (data) => {
+        let {project} = this.props;
+        this.props.updateProject({
+            ...project,
+            data
+        });
+    };
 
+    handleUpdateDescription = (description) => {
+        let {project} = this.props;
+        this.props.updateProject({...project, description});
+    };
+
+
+    render() {
         let {
-            name
-        } = this.props.project;
+            project
+        } = this.props;
 
         let menuItems = [
             {
@@ -34,14 +48,23 @@ class ProjectDetails extends Component {
 
         return (
             <div>
-                <ItemDetailsHeader headerText={name}
+                <ItemDetailsHeader headerText={project.name}
                                    componentStyles={style}
                                    options={menuItems}
                                    onSelect={this.onSelectMenuItem}/>
+                <DescriptionTextArea description={project.description}
+                                     onChange={this.handleUpdateDescription}/>
             </div>
         )
     }
 
 }
 
-export default connect()(ProjectDetails);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateProject: (project) => dispatch(updateProject(project)),
+        deleteProject: (id) => dispatch(deleteProject(id))
+    }
+};
+
+export default connect(null, mapDispatchToProps)(ProjectDetails);

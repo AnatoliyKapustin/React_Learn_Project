@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {addIssueToNewProject, deleteIssueAction, updateIssue} from "../../actions/issue";
 import {DELETE_ISSUE} from "../../constants/actionTypes";
 import IssueToProjectDropdown from "../../components/issues/IssueToProjectDropdown";
-import DescriptionTextArea from "../../components/issues/DescriptionTextArea";
+import DescriptionTextArea from "../../components/general/DescriptionTextArea";
 
 class IssueDetails extends Component {
 
@@ -35,7 +35,6 @@ class IssueDetails extends Component {
     };
 
     onSelectMenuItem = (eventKey) => {
-
         let {
             issue,
             deleteIssue
