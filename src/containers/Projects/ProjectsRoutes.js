@@ -36,7 +36,7 @@ class ProjectsRoutes extends Component {
                                users={users}
                                projects={projects}
                                selectedKey={Menu.TABLE}
-                               fullContent/>
+                               showIssuesWithoutProject/>
                 )}/>
                 <Route exact path="/projects/:id/table" render={props => {
                     let selectedId = props.match.params.id;

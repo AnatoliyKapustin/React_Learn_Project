@@ -25,7 +25,7 @@ class ListView extends Component {
 
         return filterFunction(issues).map(issue => {
             let projectName = selectedProject ? selectedProject.name : undefined;
-            if (!projectName && issue.projectId !== undefined) {
+            if (!projectName && issue.projectId !== undefined && projects !== undefined) {
                 projectName = projects.filter(project => project.id === issue.projectId)[0].name;
             }
             return (<IssueItem issue={issue}

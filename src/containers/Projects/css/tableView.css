@@ -4,6 +4,28 @@
     padding-top: 22px;
 }
 
+.table-view > thead > tr > th, .table-view > tbody > tr > td {
+    border: 1px solid #cccccc;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px 8px;
+}
+
 .table-view > thead > tr > th {
     background-color: #F3F3F3;
+}
+
+.table-view > thead > tr > th {
+    background-color: #E6E7E9;
+}
+
+.table-view > tbody > .project-row {
+    background-color: #F3F3F3;
+    color: #888;
+}
+
+.table-view > tbody > .project-row > td:nth-child(2){
+    background-color: #F3F3F3;
+    color: #888;
 }

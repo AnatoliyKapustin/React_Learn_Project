@@ -73,7 +73,7 @@ class TableView extends Component {
         let issueCount = 1;
         for (let project of projects) {
             result.push(
-                <tr key={result.length}>
+                <tr key={result.length} className={tableStyle["project-row"]}>
                     <td/>
                     <td>{project.name}</td>
                     <td>{project.startDate ? moment(project.startDate).format(DATE_FORMAT) : ""}</td>
@@ -91,7 +91,7 @@ class TableView extends Component {
         const withoutProject = issuesInProject(issues, undefined);
         if (showIssuesWithoutProject && withoutProject.length > 0) {
             result.push(
-                <tr key={result.length}>
+                <tr key={result.length} className={tableStyle["project-row"]}>
                     <td/>
                     <td>Без проектные</td>
                     <td/>
