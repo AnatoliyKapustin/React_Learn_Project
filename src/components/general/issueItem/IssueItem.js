@@ -37,8 +37,6 @@ class IssueItem extends Component {
             executorAvatar = byUuid(users, executors[0]).avatar;
         }
 
-        console.log("asdasd")
-
         return (
             <Link to={to}>
                 <div className={`${style.issueItemContainer} ${selected ? style.selectedItem : ""}`}>

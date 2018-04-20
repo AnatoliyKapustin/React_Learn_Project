@@ -5,6 +5,12 @@ import style from "./css/style.css";
 
 class DescriptionTextArea extends Component {
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.description === undefined) {
+            this.textarea.value = "";
+        }
+    }
+
     state = {
         focused: false,
         placeholder: ""
@@ -22,7 +28,6 @@ class DescriptionTextArea extends Component {
         } = this.state;
 
         if (focused) {
-            console.log("onChange");
             onChange(this.textarea.value);
         }
         this.setState({
@@ -32,7 +37,6 @@ class DescriptionTextArea extends Component {
     };
 
     onFocus = () => {
-        console.log("onFocus ");
         this.setState({
             focused: true
         })
@@ -72,7 +76,7 @@ class DescriptionTextArea extends Component {
                                      className={`${style["description-textarea"]}`}
                                      placeholder={placeholder}
                                      rows={10}
-                                     defaultValue={description}
+                                     value={description}
                         />
                     </FormGroup>
                 </form>

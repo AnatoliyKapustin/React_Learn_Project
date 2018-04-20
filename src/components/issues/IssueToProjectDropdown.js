@@ -52,7 +52,7 @@ class IssueToProjectDropdown extends Component {
 
         return (
             <Dropdown id="add-issue-to-project" bsStyle="link" className={style["issue-to-project"]}
-                      open={this.state.open}>
+                      open={this.state.open} onToggle={() => {}}>
                 <Dropdown.Toggle bsStyle="link" className={style["issue-to-project-button"]} noCaret
                                  onClick={this.handleClick}>
                     {

@@ -124,6 +124,7 @@
     border-radius: 0;
     border-bottom: 1px solid #E7E6EC;
     min-height: 150px;
+    max-height: 500px;
 }
 
 /*Issue to project dropdown*/
