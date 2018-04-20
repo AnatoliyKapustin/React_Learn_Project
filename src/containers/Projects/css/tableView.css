@@ -1,5 +1,9 @@
-.tableView {
+.view-switch {
     width: auto;
     float: right;
     padding-top: 22px;
+}
+
+.table-view > thead > tr > th {
+    background-color: #F3F3F3;
 }
